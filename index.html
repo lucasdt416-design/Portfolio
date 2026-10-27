@@ -190,6 +190,12 @@ html.gl .shot>*,html.gl .pf>*{display:none}
 
 /* ---------- phones ---------- */
 .name-slot,.scene-slot{display:none}
+.sp-row{display:contents}
+.note-m{display:none!important}
+.note-d{display:flex;align-items:center;gap:12px;margin-top:1.1rem;padding-left:6%}
+.note-d .up{transform:rotate(180deg);margin-top:-6px}
+@media (max-width:899px){.note-d{gap:8px;padding-left:0;margin-top:.7rem}.note-d .hand{font-size:1.05rem;line-height:1.15}
+  [data-scene="2"] .note-d,[data-scene="3"] .note-d{display:none}}
 .ar-mob{display:none}
 .tap{display:none}
 @media (max-width:899px){.tap{display:inline}}
@@ -199,16 +205,28 @@ html.gl .shot>*,html.gl .pf>*{display:none}
   html.gl .name-slot{display:block;height:min(30svh,58vw);margin-bottom:1.2rem}
   html.gl .scene-slot{display:block;width:100%;aspect-ratio:1/.82;margin:1.4rem 0 .4rem}
   .ar-desk{display:none}.ar-mob{display:block}
-  .sp-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .sp-grid{display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);column-gap:14px;align-items:start}
   .sp-grid>.col{display:contents}
-  .sp-grid>.col>*{order:1}
-  .sp-grid>.col>.note{order:2;margin-top:1.8rem}
-  .sp-grid>.stage{order:3;margin-top:1rem}
+  .sp-grid>.col>*{grid-column:1/-1;order:1}
+  .sp-grid>.col>.sp-row{display:contents}
+  .sp-row>.sp-slot{grid-column:1/-1;order:1}
+  .sp-row>.sp-facts{grid-column:1;order:2;margin-top:1.6rem}
+  .sp-grid>.stage{grid-column:2;order:2;margin-top:1.6rem}
   .sp-grid>.col>.btns,.sp-grid>.col>.note-after{order:4}
-  .sp-grid .note{align-items:flex-end}
   .stage{margin-left:calc(-1*var(--gutter-l) + 8px);margin-right:calc(-1*var(--gutter-r) + 8px)}
+  .sp-grid>.stage{margin-left:0;margin-right:0}
   .ph-stage{margin-left:0;margin-right:0}
-  .veil{background:color-mix(in srgb, var(--bg) 38%, transparent)}
+  .veil{display:none}
+  main p,main h2,main h3,main h4,main li,.lede,.eyebrow,.kicker,.hand,.why-k,.meta,.fine,.stat span,.funnel span{text-shadow:0 0 14px var(--bg),0 0 4px var(--bg),0 1px 2px var(--bg)}
+  .sp-row .sp-slot{aspect-ratio:1.5/1;margin:.2rem 0 0;width:100%}
+  .sp-facts>*:first-child{margin-top:0}
+  .sp-facts .chips{flex-direction:column;align-items:flex-start;margin-top:0}
+  .sp-facts .stats{flex-direction:column;flex-wrap:nowrap;gap:12px;margin-top:0}
+  .sp-facts .stat b{font-size:2rem}
+  .sp-facts .funnel{flex-direction:column;align-items:flex-start;gap:4px;margin-top:0}
+  .sp-facts .funnel i{transform:rotate(90deg);line-height:.6;margin-left:6px}
+  .sp-facts .funnel b{font-size:2.1rem}
+  .sp-facts .fine{margin:.7rem 0 0;font-size:.72rem}
   .sec{min-height:auto;padding-block:12vh}
   .sec.tall{min-height:auto}
 }
@@ -283,7 +301,6 @@ html:not(.gl) .a-win{background:#efe5d3}
 
 /* ---------- small screens: text sits over a dimmed world ---------- */
 @media (max-width:760px){
-  .veil{background:color-mix(in srgb, var(--bg) 58%, transparent)}
   .sec{padding-block:14vh}
   .stats{gap:14px 24px}
 }
@@ -361,8 +378,12 @@ html:not(.gl) .a-win{background:#efe5d3}
       <h2 class="sp-title" data-nosplit>StockPulse</h2>
       <div class="why"><span class="why-k">why I built it</span><p>Following the market, I kept hitting the same wall. The news that actually moves a stock is scattered: a filing lands on the SEC site, the company posts a release, and five outlets rewrite the same story. Nothing tells you which one matters. Big firms pay for tools that sort this out. Everyone else just gets the noise. I wanted one place that pulls it all in, drops the repeats, and tells you plainly what's worth your attention. So I built it.</p></div>
       <p>StockPulse is a full-stack news pipeline for the stock market. It pulls from SEC filings, company investor-relations feeds and Finnhub, and turns three noisy firehoses into one clean stream for a 30-company watchlist.</p>
-      <ul class="chips" aria-label="Tech stack"><li>Python</li><li>JavaScript</li><li>GitHub Actions</li><li>Chart.js</li></ul>
-      <div class="note"><p class="hand">it's live. go poke it. <span class="tap">(tap the screenshot to zoom)</span></p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
+      <div class="sp-row">
+        <div class="sp-facts">
+          <ul class="chips" aria-label="Tech stack"><li>Python</li><li>JavaScript</li><li>GitHub Actions</li><li>Chart.js</li></ul>
+        </div>
+      </div>
+      <div class="note note-m"><p class="hand">it's live. go poke it. <span class="tap">(tap the screenshot to zoom)</span></p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
       <div class="btns"><a class="btn" href="https://stock-news-dashboard.pages.dev" target="_blank" rel="noopener">Open the live dashboard ↗</a></div>
     </div>
       <div class="stage">
@@ -373,6 +394,7 @@ html:not(.gl) .a-win{background:#efe5d3}
           <img src="img/p-home.webp" width="1200" height="646" alt="StockPulse home page: a 'What's on the agenda?' search with floating company score cards and the 30-company watchlist" loading="lazy">
         </div>
       </figure>
+        <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">it's live. go poke it. <span class="tap">(tap to zoom)</span></p></div>
       </div>
     </div>
   </section>
@@ -383,6 +405,8 @@ html:not(.gl) .a-win{background:#efe5d3}
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span class="on">Sort</span><span>Score</span><span>Run</span></div>
       <h3>Duplicates out. Signal in.</h3>
       <p>The same story shows up in five places at once. A deduplication engine collapses the repeats, then a rule-based classifier scores what's left from 0 to 10. The top stories get a plain-English takeaway.</p>
+      <div class="sp-row">
+        <div class="sp-facts">
       <div class="funnel" aria-label="One recent pipeline run">
         <div><b data-count="2112">2,112</b><span>items pulled in</span></div>
         <i aria-hidden="true">→</i>
@@ -391,7 +415,9 @@ html:not(.gl) .a-win{background:#efe5d3}
         <div><b data-count="250">250</b><span>high priority (7+)</span></div>
       </div>
       <p class="fine">One recent run: 1,200 SEC filings, 162 company releases and 750 news articles.</p>
-      <div class="note"><p class="hand">every story gets a score + a takeaway</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
+        </div>
+      </div>
+      <div class="note note-m"><p class="hand">every story gets a score + a takeaway</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
     </div>
       <div class="stage">
         <figure class="shot" data-panel="1" style="--ar:1.1132;--rot:1.4deg">
@@ -401,6 +427,7 @@ html:not(.gl) .a-win{background:#efe5d3}
           <img src="img/sp-feed.webp" width="590" height="500" alt="The Intelligence Feed: 1,079 scored items, with the top story scored 10 out of 10 and an executive takeaway" loading="lazy">
         </div>
       </figure>
+        <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">every story gets a score + a takeaway</p></div>
       </div>
     </div>
   </section>
@@ -411,12 +438,16 @@ html:not(.gl) .a-win{background:#efe5d3}
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span>Sort</span><span class="on">Score</span><span>Run</span></div>
       <h3>30 companies, one picture.</h3>
       <p>Scored stories roll up by company and sector, so the whole watchlist fits on one screen. Analytics pages chart it all with Chart.js: how fast disclosures are arriving, which tickers are getting hit, and what kind of news it is.</p>
+      <div class="sp-row">
+        <div class="sp-facts">
       <div class="stats">
         <div class="stat"><b data-count="1079">1,079</b><span>scored items in the feed</span></div>
         <div class="stat"><b data-count="9">9</b><span>news categories</span></div>
         <div class="stat"><b data-count="30">30</b><span>companies tracked</span></div>
       </div>
-      <div class="note"><p class="hand">the whole watchlist, one screen</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
+        </div>
+      </div>
+      <div class="note note-m"><p class="hand">the whole watchlist, one screen</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
     </div>
       <div class="stage">
         <figure class="shot" data-panel="2" style="--ar:2.2018;--rot:-1.2deg">
@@ -426,6 +457,7 @@ html:not(.gl) .a-win{background:#efe5d3}
           <img src="img/p-dir.webp" width="1200" height="485" alt="Company directory: the full watchlist with sector filters and each company's recent move" loading="lazy">
         </div>
       </figure>
+        <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">the whole watchlist, one screen</p></div>
       </div>
     </div>
   </section>
@@ -436,12 +468,17 @@ html:not(.gl) .a-win{background:#efe5d3}
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span>Sort</span><span>Score</span><span class="on">Run</span></div>
       <h3>It keeps running.</h3>
       <p>A CI/CD pipeline runs 56 automated tests before anything ships. A self-healing monitor catches failed daily data runs and recovers them on its own. Built across six-plus feature phases with a graduate-student co-developer.</p>
+      <div class="sp-row">
+        <div class="scene-slot sp-slot" aria-hidden="true"></div>
+        <div class="sp-facts">
       <div class="stats">
         <div class="stat"><b data-count="56">56</b><span>tests gate every deploy</span></div>
         <div class="stat"><b data-count="6" data-suffix="+">6+</b><span>feature phases</span></div>
         <div class="stat"><b data-count="2">2</b><span>developers</span></div>
       </div>
-      <div class="note"><p class="hand">the pipeline reports on itself</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
+        </div>
+      </div>
+      <div class="note note-m"><p class="hand">the pipeline reports on itself</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
       <div class="note note-after"><p class="hand">and the red dot in the ring? a failed run healing itself.</p></div>
     </div>
       <div class="stage">
@@ -452,6 +489,7 @@ html:not(.gl) .a-win{background:#efe5d3}
           <img src="img/sp-health.webp" width="560" height="296" alt="Pipeline Health and Safeguards panel showing Healthy and Operational, with counts for SEC filings, company releases, news coverage, unique yield and high-priority stories" loading="lazy">
         </div>
       </figure>
+        <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">the pipeline reports on itself</p></div>
       </div>
     </div>
   </section>
@@ -727,8 +765,31 @@ var secs = [].slice.call(document.querySelectorAll('main .sec'));
 var secScene = secs.map(function(s){ return +s.dataset.scene; });
 var secCh = secs.map(function(s){ return s.dataset.ch.split('|'); });
 var secCls = secs.map(function(s){ return [].slice.call(s.classList).filter(function(c){return c.indexOf('a-')===0 || c==='warm';}).join(' '); });
-var anchors = [];
-function measure(){ anchors = secs.map(function(s){ return s.offsetTop + s.offsetHeight/2; }); }
+var anchors = [], holdA = [], holdB = [];
+function measure(){
+  anchors = secs.map(function(s){ return s.offsetTop + s.offsetHeight/2; });
+  holdA = anchors.slice(); holdB = anchors.slice();
+  if (innerWidth >= 900) return;
+  var H = innerHeight, sy = scrollY, n = secs.length;
+  secs.forEach(function(s, i){
+    var vis = [].filter.call(s.querySelectorAll('.name-slot, .scene-slot, .stage'), function(e){ return e.getBoundingClientRect().height > 0; });
+    if (!vis.length) return;
+    var r0 = vis[0].getBoundingClientRect(), r1 = vis[vis.length-1].getBoundingClientRect();
+    holdA[i] = r0.top + sy + r0.height*.5 - H*.2;
+    holdB[i] = Math.max(holdA[i], r1.top + sy + r1.height*.5 + H*.1);
+  });
+  holdB[0] = Math.max(holdB[0], H*.75);
+  var maxVc = document.documentElement.scrollHeight - H/2 - 4;
+  for (var i = 0; i < n-1; i++){
+    var need = H*.32, g = holdA[i+1] - holdB[i];
+    if (g < need){ var d = (need - g)/2; holdB[i] = Math.max(holdA[i], holdB[i]-d); holdA[i+1] = Math.min(holdB[i+1], holdA[i+1]+d); }
+  }
+  for (var k = 0; k < n; k++){
+    if (k > 0) holdA[k] = Math.max(holdA[k], holdB[k-1] + 1);
+    holdA[k] = Math.min(holdA[k], maxVc - (n-1-k)); holdB[k] = Math.max(holdB[k], holdA[k]);
+  }
+}
+if (window.ResizeObserver) new ResizeObserver(function(){ measure(); }).observe(document.querySelector('main'));
 measure();
 
 /* HUD */
@@ -771,12 +832,12 @@ var CFG = [
 CFG.forEach(function(c){ c.col = new THREE.Color(c.bg); });
 
 var mobile = innerWidth < 900;
-var N = mobile ? 6500 : 13000;
+var N = mobile ? 10000 : 13000;
 
 var VERT = [
 "uniform float uTime, uA, uB, uF, uSize, uPix, uCount;",
 "uniform vec2 uShiftA, uShiftB, uPanelA, uPanelB;",
-"uniform float uScaleA, uScaleB;",
+"uniform float uScaleA, uScaleB, uRotA, uRotB, uDim;",
 "uniform vec3 uMouse;",
 "attribute vec4 aRand;",
 "attribute vec3 aText;",
@@ -810,7 +871,8 @@ var VERT = [
 "  } else if(k<2.5){",                           /* 2 SORT -> rain into the feed, sorted out the bottom */
 "    float b=floor(r.y*6.); float hb= b<.5?1.0: b<1.5?2.0: b<2.5?1.4: b<3.5?2.5: b<4.5?.9:2.2;",
 "    float xb=-hw*.8+b*hw*.32; float u=fract(r.x+t*.085); bool dup=r.z<.27; float top=hh;",
-"    if(u<.6){ float q=u/.6; float xs=(fract(r.z*5.3)-.5)*hw*1.9; float y=mix(top+3.3,top-.05,q);",
+"    if(r.w<.045 && hh<.6){ p=vec3((r.x-.5)*hw*2.1,top-.08,0.); c=vec3(.75,.88,.88); a=.75*step(.4,fract(r.x*40.)); }",
+"    else if(u<.6){ float q=u/.6; float xs=(fract(r.z*5.3)-.5)*hw*1.9; float y=mix(top+3.3,top-.05,q);",
 "      p=vec3(xs,y,(r.w-.5)*.5); c=vec3(.82,.88,.9); a=.7;",
 "      if(dup){ float hit=smoothstep(.8,1.,q); p.x+=sign(xs+.01)*hit*hit*2.6; p.y+=hit*(1.-hit)*1.6; c=vec3(1.,.4,.32); a=.95*(1.-smoothstep(.95,1.,q)*.7); } }",
 "    else { p=vec3(xb+(fract(r.z*7.)-.5)*.5,-hh-.3-fract(r.w*5.3)*hb*.85,(fract(r.z*3.1)-.5)*.3);",
@@ -830,7 +892,7 @@ var VERT = [
 "    a=gz>1.?0.:.8;",
 "  } else if(k<4.5){",                           /* 4 RELIABILITY: 56 tests ring around the health panel */
 "    float cl=floor(r.x*56.); float ang=-cl/56.*TAU+PI*.5; float lit=fract(t*.1)*82.;",
-"    if(r.w<.26){ float x=(r.y-.5)*hw*1.7; p=vec3(x,-hh-1.95+ecg(x*.26-t*.42)*.8+(r.z-.5)*.03,0.); c=vec3(.62,1.,.82); a=.9*(1.-smoothstep(hw*.7,hw*.85,abs(x))); }",
+"    if(r.w<.26){ float x=(r.y-.5)*hw*1.7; float ey= hw<1.7 ? -.35 : -hh-1.95; p=vec3(x,ey+ecg(x*.26-t*.42)*.8+(r.z-.5)*.03,0.); c=vec3(.62,1.,.82); a=.9*(1.-smoothstep(hw*.7,hw*.85,abs(x))); }",
 "    else { float rr=sqrt(r.y)*.13; p=vec3(cos(ang)*(hw+.95)+cos(r.z*TAU)*rr, sin(ang)*(hh+.95)+sin(r.z*TAU)*rr,0.);",
 "      float on=step(cl,lit); bool bad=abs(cl-23.)<.5 && lit<36.;",
 "      c= on>.5 ? (bad? vec3(1.,.32,.28) : vec3(.46,1.,.7)) : vec3(.34,.42,.44);",
@@ -926,11 +988,14 @@ var VERT = [
 "    else { p=dv*pow(r.w/.8,2.6)*1.45; float cy=cos(t*.2), sy=sin(t*.2); p=vec3(p.x*cy+p.z*sy,p.y,-p.x*sy+p.z*cy);",
 "      c=mix(vec3(1.,.93,.82),vec3(.95,.6,.42),r.w); a=.85; }",
 "  }",
+"  if(k>.5 && k<3.5) a*=uDim;",
 "}",
 "void main(){",
 "  vec3 pA,pB,cA,cB; float aA,aB;",
 "  scene(uA,uShiftA,uPanelA,pA,cA,aA);",
 "  if(uF>.001){ scene(uB,uShiftB,uPanelB,pB,cB,aB); } else { pB=pA; cB=cA; aB=aA; }",
+"  if(abs(uRotA)>.001){ float ra=cos(uRotA), rb=sin(uRotA); pA.xy=vec2(pA.x*ra-pA.y*rb, pA.x*rb+pA.y*ra); }",
+"  if(abs(uRotB)>.001){ float rc=cos(uRotB), rd=sin(uRotB); pB.xy=vec2(pB.x*rc-pB.y*rd, pB.x*rd+pB.y*rc); }",
 "  float m=clamp((uF-aRand.x*.38)/.62,0.,1.); m=m*m*(3.-2.*m);",
 "  vec3 p=mix(pA*uScaleA+vec3(uShiftA,0.),pB*uScaleB+vec3(uShiftB,0.),m);",
 "  float sw=sin(m*PI);",
@@ -966,7 +1031,7 @@ geo.setAttribute('aIdx', new THREE.BufferAttribute(idx,1));
 var U = {
   uTime:{value:0}, uA:{value:0}, uB:{value:0}, uF:{value:0}, uSize:{value:mobile?2.6:2.4},
   uPix:{value:1}, uCount:{value:N}, uShiftA:{value:new THREE.Vector2()}, uShiftB:{value:new THREE.Vector2()},
-  uMouse:{value:new THREE.Vector3(99,99,0)}, uGlow:{value:.55}, uPanelA:{value:new THREE.Vector2(2.8,1.6)}, uPanelB:{value:new THREE.Vector2(2.8,1.6)}, uScaleA:{value:1}, uScaleB:{value:1}
+  uMouse:{value:new THREE.Vector3(99,99,0)}, uGlow:{value:.55}, uPanelA:{value:new THREE.Vector2(2.8,1.6)}, uPanelB:{value:new THREE.Vector2(2.8,1.6)}, uScaleA:{value:1}, uScaleB:{value:1}, uRotA:{value:0}, uRotB:{value:0}, uDim:{value:mobile?.55:1}
 };
 var mat = new THREE.ShaderMaterial({uniforms:U, vertexShader:VERT, fragmentShader:FRAG, transparent:true, depthWrite:false, depthTest:false,
   blending:THREE.CustomBlending, blendEquation:THREE.AddEquation, blendSrc:THREE.OneFactor, blendDst:THREE.OneMinusSrcAlphaFactor});
@@ -1039,7 +1104,7 @@ PANELS.forEach(function(p){
 });
 function setPanelAspect(p){
   if (!p.asp || !p.el) return;
-  p.pa = (mobile && p.kind === 'browser') ? Math.min(p.asp, 1.22) : p.asp;
+  p.pa = (mobile && p.kind === 'browser') ? Math.min(p.asp, 1.75) : p.asp;
   p.el.style.setProperty('--ar', p.pa.toFixed(4));
   p.mesh.material.uniforms.uAsp.value = p.pa;
 }
@@ -1082,6 +1147,7 @@ function resize(){
   renderer.setPixelRatio(dpr); renderer.setSize(w, h, false);
   if (pRenderer) { pRenderer.setPixelRatio(dpr); pRenderer.setSize(w, h, false); }
   cam.aspect = w/h; cam.position.z = (w/h) < .8 ? 14 : 10; cam.updateProjectionMatrix();
+  U.uDim.value = mobile ? .55 : 1; U.uSize.value = 2.4 * (cam.position.z/10) * (mobile ? .95 : 1);
   viewH = 2*cam.position.z*Math.tan(THREE.MathUtils.degToRad(25)); viewW = viewH*cam.aspect;
   U.uPix.value = dpr;
   measure();
@@ -1133,9 +1199,11 @@ if (!reduced) addEventListener('pointermove', function(e){
 /* scroll -> continuous scene position */
 var cur = 0;
 function scrollTarget(){
-  var vc = scrollY + innerHeight/2, n = anchors.length;
-  if (vc <= anchors[0]) return 0;
-  for (var i=0;i<n-1;i++) if (vc < anchors[i+1]) return i + (vc-anchors[i])/(anchors[i+1]-anchors[i]);
+  var vc = scrollY + innerHeight/2, n = holdA.length;
+  for (var i=0;i<n-1;i++){
+    if (vc <= holdB[i]) return i;
+    if (vc < holdA[i+1]) return i + (vc-holdB[i])/(holdA[i+1]-holdB[i]);
+  }
   return n-1;
 }
 cur = scrollTarget();
@@ -1143,6 +1211,8 @@ cur = scrollTarget();
 var tmpCol = new THREE.Color(), lastBg = '', veil = document.getElementById('veil');
 var ANCH = secs.map(function(s){ return s.querySelector('.name-slot, .scene-slot, .stage'); });
 var FITW = {5:6.9, 6:9.5, 7:6.4, 8:7.4, 9:6.4, 11:6.8, 12:6.7, 13:11};
+var lastRot = 0;
+var PHONE_SP = {1:{panel:1, rot:-Math.PI/2}, 2:{panel:1}, 3:{panel:1, k:.6}, 4:{pn:[1.55,1.1], c:[0,0], w:5.6, h:4.9}};
 function sstep(a,b,x){ x=Math.min(1,Math.max(0,(x-a)/(b-a))); return x*x*(3-2*x); }
 var t0 = performance.now();
 
@@ -1161,9 +1231,18 @@ function frame(now){
   var wide = !mobile;
   measurePanels();
   var shiftFor = function(si, sc, out, pn){
-    var sp = (sc>=1 && sc<=4) ? PANELS[sc-1] : null;
-    if (sp && sp.on){ out.set(sp.wx, sp.wy); pn.set(sp.ww/2, sp.wh/2); return 1; }
+    var sp = (sc>=1 && sc<=4) ? PANELS[sc-1] : null, ps0 = !wide && PHONE_SP[sc]; lastRot = 0;
+    if (sp && sp.on && (wide || (ps0 && ps0.panel))){
+      out.set(sp.wx, sp.wy);
+      if (!wide && ps0.rot){ lastRot = ps0.rot; pn.set(sp.wh/2, sp.ww/2); } else pn.set(sp.ww/2, sp.wh/2);
+      return (!wide && ps0.k) || 1; }
     pn.set(2.8,1.6);
+    var ps = !wide && PHONE_SP[sc], an0 = ANCH[si];
+    if (ps && an0){ var q = an0.getBoundingClientRect(); if (q.width > 0){
+      var sw = q.width/innerWidth*viewW, sh = q.height/innerHeight*viewH, k = Math.min(1, sw/ps.w, sh/ps.h);
+      pn.set(ps.pn[0], ps.pn[1]);
+      out.set(((q.left+q.width/2)/innerWidth-.5)*viewW - ps.c[0]*k, -((q.top+q.height/2)/innerHeight-.5)*viewH - ps.c[1]*k);
+      return k; } }
     if (wide){ out.set(CFG[sc].sx, CFG[sc].sy); return 1; }
     var an = ANCH[si];
     if (an){ var r = an.getBoundingClientRect(); if (r.width > 0){
@@ -1171,8 +1250,8 @@ function frame(now){
       return sc === 0 ? 1 : Math.min(1, (r.width/innerWidth*viewW)/(FITW[sc]||7)); } }
     out.set(0,0); return 1;
   };
-  U.uScaleA.value = shiftFor(i, A, U.uShiftA.value, U.uPanelA.value);
-  U.uScaleB.value = shiftFor(j, B, U.uShiftB.value, U.uPanelB.value);
+  U.uScaleA.value = shiftFor(i, A, U.uShiftA.value, U.uPanelA.value); U.uRotA.value = lastRot;
+  U.uScaleB.value = shiftFor(j, B, U.uShiftB.value, U.uPanelB.value); U.uRotB.value = lastRot;
   U.uGlow.value = ca.glow + (cb.glow - ca.glow)*ff;
   tmpCol.copy(ca.col).lerp(cb.col, ff);
   renderer.setClearColor(tmpCol, 1);
