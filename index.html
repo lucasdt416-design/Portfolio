@@ -3,14 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-</head>
-<body>
-<title>Lucas Thomas</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Lucas Thomas — first-year TrackOne Engineering student at the University of Toronto. StockPulse, SEEK Jr., Echo, Smart Windows, CETA Robotics.">
+<title>Lucas Thomas · Engineering Portfolio</title>
+<meta name="description" content="First-year Engineering student at the University of Toronto. StockPulse, UTSM, UTWind, robotics and more, in one scroll-driven particle world.">
+<link rel="canonical" href="https://personal-portfolio-w6hr.onrender.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f1f'/%3E%3Ctext x='32' y='44' font-family='Impact,Arial Narrow,sans-serif' font-size='34' font-weight='900' text-anchor='middle' fill='%23ece5d6'%3EL%C2%B7T%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://personal-portfolio-w6hr.onrender.com/">
+<meta property="og:title" content="Lucas Thomas · Engineering Portfolio">
+<meta property="og:description" content="First-year Engineering student at the University of Toronto. StockPulse, UTSM, UTWind, robotics and more, in one scroll-driven particle world.">
+<meta property="og:image" content="https://personal-portfolio-w6hr.onrender.com/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lucas Thomas · Engineering Portfolio">
+<meta name="twitter:description" content="First-year Engineering student at the University of Toronto. StockPulse, UTSM, UTWind, robotics and more, in one scroll-driven particle world.">
+<meta name="twitter:image" content="https://personal-portfolio-w6hr.onrender.com/share.jpg">
+<meta name="theme-color" content="#0b0f1f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;800;900&family=Gochi+Hand&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
 <style>
 /* Layout: one fixed WebGL world behind a left-hand reading column; each section is a "place" the particles become. Single deliberate dark world with one daylight chapter. */
 :root{
@@ -243,61 +256,6 @@ html:not(.gl) .a-win{background:#efe5d3}
   .shot,.wi{transition:none}
   .btn{transition:none}
 }
-
-/* ==========================================================
-   V2.1 / restrained visual polish — original particle world intact
-   ========================================================== */
-:root { --polish-glow: rgba(240,201,138,.16); }
-body::after{
-  content:"";position:fixed;z-index:3;inset:0;pointer-events:none;
-  background:radial-gradient(420px circle at var(--mouse-x,75%) var(--mouse-y,42%),
-    var(--polish-glow),transparent 72%);
-  opacity:.55;transition:opacity .35s ease;
-}
-.nav-in{border-bottom:1px solid rgba(238,231,217,.14);backdrop-filter:blur(9px)}
-.nav .btn{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 20%,transparent),0 0 24px color-mix(in srgb,var(--acc) 13%,transparent)}
-.name{position:relative;letter-spacing:-.025em;text-shadow:0 8px 50px rgba(0,0,0,.22)}
-#hero .name::after{
-  content:"";display:block;width:clamp(68px,11vw,140px);height:3px;
-  margin-top:clamp(15px,2vw,25px);background:var(--acc);
-  box-shadow:0 0 22px color-mix(in srgb,var(--acc) 60%,transparent);
-  transform-origin:left;animation:hero-line 1.4s cubic-bezier(.2,.8,.2,1) both;
-}
-@keyframes hero-line{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
-#hero .col{isolation:isolate}
-#hero .col::before{
-  content:"";position:absolute;z-index:-1;inset:-38px -34px -42px -30px;
-  border-left:1px solid color-mix(in srgb,var(--acc) 32%,transparent);
-  background:linear-gradient(90deg,rgba(12,16,32,.26),transparent 72%);
-  pointer-events:none;
-}
-.sec:not(#hero)::before{
-  content:"";position:absolute;top:0;left:max(16px,calc((100vw - 1240px)/2));
-  width:min(140px,20vw);height:1px;background:var(--acc);opacity:.48;
-  box-shadow:0 0 22px color-mix(in srgb,var(--acc) 45%,transparent);
-  pointer-events:none;
-}
-.shot-in{box-shadow:0 24px 70px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
-.shot:hover .shot-in{box-shadow:0 28px 90px -28px rgba(0,0,0,.8),0 0 0 1px color-mix(in srgb,var(--acc) 45%,transparent)}
-.gal img{transition:transform .4s ease,box-shadow .4s ease}
-.gal img:hover{transform:translateY(-9px) rotate(0deg);box-shadow:0 20px 36px -12px rgba(0,0,0,.75)}
-.btn{box-shadow:0 8px 24px -14px color-mix(in srgb,var(--acc) 65%,transparent)}
-.btn:hover{box-shadow:0 12px 36px -13px color-mix(in srgb,var(--acc) 75%,transparent)}
-#site-progress{position:fixed;z-index:40;top:0;left:0;width:100%;height:2px;
-  background:var(--acc);transform:scaleX(0);transform-origin:left;pointer-events:none;
-  box-shadow:0 0 14px var(--acc)}
-@media(max-width:760px){
-  body::after{opacity:.24}
-  #hero .col::before{inset:-18px -10px -24px -12px}
-  .nav-in{backdrop-filter:blur(6px)}
-  .gal img:hover{transform:none}
-}
-@media(prefers-reduced-motion:reduce){
-  #hero .name::after{animation:none}
-  .gal img{transition:none}
-  body::after{display:none}
-}
-
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -314,7 +272,6 @@ body::after{
   </defs>
 </svg>
 
-<div id="site-progress" aria-hidden="true"></div>
 <canvas id="world" aria-hidden="true"></canvas>
 <div class="veil" id="veil"></div>
 <canvas id="panels" aria-hidden="true"></canvas>
@@ -1133,31 +1090,5 @@ requestAnimationFrame(frame);
 })();
 </script>
 
-
-<script>
-/* Visual polish only: original Three.js particle scenes and scroll logic untouched. */
-(()=>{
- const progress=document.getElementById('site-progress');
- let ticking=false;
- const update=()=>{
-   const max=document.documentElement.scrollHeight-innerHeight;
-   progress.style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`;
-   ticking=false;
- };
- addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
- addEventListener('resize',update,{passive:true});update();
- if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
-   let mousePending=false,x=0,y=0;
-   addEventListener('pointermove',e=>{
-     x=e.clientX;y=e.clientY;
-     if(!mousePending){mousePending=true;requestAnimationFrame(()=>{
-       document.documentElement.style.setProperty('--mouse-x',x+'px');
-       document.documentElement.style.setProperty('--mouse-y',y+'px');
-       mousePending=false;
-     });}
-   },{passive:true});
- }
-})();
-</script>
 </body>
 </html>
