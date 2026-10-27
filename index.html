@@ -182,6 +182,12 @@ html.gl .shot>*,html.gl .pf>*{display:none}
   .pf{position:relative;left:auto;top:auto;width:calc(var(--wm,46%) - 7px)}
 }
 
+/* ---------- the "why" ---------- */
+.why{margin:1.5rem 0 .2rem;max-width:34rem;position:relative}
+.why-k{display:inline-block;font:400 1.4rem/1 var(--f-hand);color:var(--acc);transform:rotate(-2deg);margin-bottom:.45rem}
+.why p{margin:0;font-size:1.12rem;line-height:1.62;font-style:italic;color:var(--paper)}
+.why+p{color:var(--paper-dim)}
+
 /* ---------- phones ---------- */
 .name-slot,.scene-slot{display:none}
 .ar-mob{display:none}
@@ -353,7 +359,8 @@ html:not(.gl) .a-win{background:#efe5d3}
       <span class="feat">featured project</span>
       <p class="eyebrow">Independent · 2026 – present</p>
       <h2 class="sp-title" data-nosplit>StockPulse</h2>
-      <p>A full-stack news pipeline for the stock market. It pulls from SEC filings, company investor-relations feeds and Finnhub, and turns three noisy firehoses into one clean stream for a 30-company watchlist.</p>
+      <div class="why"><span class="why-k">why I built it</span><p>Following the market, I kept hitting the same wall. The news that actually moves a stock is scattered: a filing lands on the SEC site, the company posts a release, and five outlets rewrite the same story. Nothing tells you which one matters. Big firms pay for tools that sort this out. Everyone else just gets the noise. I wanted one place that pulls it all in, drops the repeats, and tells you plainly what's worth your attention. So I built it.</p></div>
+      <p>StockPulse is a full-stack news pipeline for the stock market. It pulls from SEC filings, company investor-relations feeds and Finnhub, and turns three noisy firehoses into one clean stream for a 30-company watchlist.</p>
       <ul class="chips" aria-label="Tech stack"><li>Python</li><li>JavaScript</li><li>GitHub Actions</li><li>Chart.js</li></ul>
       <div class="note"><p class="hand">it's live. go poke it. <span class="tap">(tap the screenshot to zoom)</span></p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
       <div class="btns"><a class="btn" href="https://stock-news-dashboard.pages.dev" target="_blank" rel="noopener">Open the live dashboard ↗</a></div>
@@ -455,6 +462,7 @@ html:not(.gl) .a-win{background:#efe5d3}
       <p class="eyebrow">U of T Supermileage Team · 2026 – present</p>
       <h2 class="sp-title" data-nosplit>Power&shy;train</h2>
       <div class="scene-slot" aria-hidden="true"></div>
+      <div class="why"><span class="why-k">why I'm here</span><p>I've been hooked on hydrogen cars for a long time. A car whose only exhaust is water still feels like science fiction to me, and I want to be one of the people who makes it normal. Supermileage is the closest I can get right now: a team obsessed with going as far as possible on as little energy as possible, where a lighter part or a smarter motor controller shows up directly on the scoreboard.</p></div>
       <p>I'm on the powertrain team at UTSM, the U of T student team that designs, builds and races ultra-energy-efficient vehicles at the Shell Eco-marathon Americas.</p>
       <ul class="tasks">
         <li><b>Now</b><span>Doing CAD for parts on the team's competition vehicle.</span></li>
@@ -471,6 +479,7 @@ html:not(.gl) .a-win{background:#efe5d3}
       <p class="eyebrow">U of T Wind Turbine Design Team · 2026 – present</p>
       <h2>UTWind</h2>
       <div class="scene-slot" aria-hidden="true"></div>
+      <div class="why"><span class="why-k">why I'm here</span><p>Wind power is clean energy you can actually watch working. What pulled me in is how much of a turbine comes down to the shape of its blades. A few degrees of twist or a slightly different airfoil, and the same breeze makes more power. I want to understand that well enough to design it myself.</p></div>
       <p>I'm an aerodynamics engineer on UTWind, U of T's student team that designs and builds small wind turbines.</p>
       <ul class="chips" aria-label="Focus areas"><li>Aerodynamics</li><li>Airfoils</li><li>Wind energy</li></ul>
       <div class="note"><p class="hand">air moves faster over the top of the blade. that's the whole trick.</p></div>
