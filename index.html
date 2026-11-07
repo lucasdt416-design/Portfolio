@@ -267,6 +267,7 @@ body.pgopen #scroller{pointer-events:none}
   <h3>Smart Windows</h3>
   <p>A multidisciplinary team design for a smart window that cuts how much energy a building uses. We did the research, weighed design alternatives, and built the technical presentation.</p>
   <p class="fine">★ Best Video Presentation</p>
+  <p class="hand">click any star to open its page.</p>
 </div></section>
 
 <section class="beat r" id="b9" aria-label="CETA Robotics"><div class="in">
@@ -1404,7 +1405,7 @@ function frame(now){
   for(i=0;i<stars.length;i++){ var sv=beatV(8+i), st=stars[i]; var pul=1+.12*Math.sin(t*2+i);
     if(awTitle){ var av=ss(.675,.695,s)*(1-ss(.715,.735,s)); awTitle.material.opacity=av*(awHit?1:.8); awTitle.visible=av>.01; awLabs.forEach(function(sp){ sp.material.opacity=av*.85; sp.visible=av>.01; }); }
     if(nextLab){ nextLab.material.opacity=ss(.77,.8,s)*(1-ss(.9,.925,s))*.9; nextLab.visible=nextLab.material.opacity>.01; }
-    var vis=ss(.745,.78,s); st.sp.visible=st.lb.visible=vis>.01; st.sp.scale.setScalar((9+sv*9)*pul); st.lb.material.opacity=Math.max(sv,i===starHit?1:0)*.95*vis; st.sp.material.opacity=(.95+.05*sv)*vis; }
+    var vis=ss(.745,.78,s); st.sp.visible=st.lb.visible=vis>.01; st.sp.scale.setScalar((9+sv*9)*pul); st.lb.material.opacity=Math.max(.62*(1-ss(.9,.93,s)),sv,i===starHit?1:0)*.95*vis; st.sp.material.opacity=(.95+.05*sv)*vis; }
   for(i=0;i<sprites.length;i++){ var sp=sprites[i]; d=z-sp.position.z; sp.material.opacity=sp.userData.lab?ss(3,8,d)*(1-ss(30,60,d))*.95:ss(2,6,d)*(1-ss(26,58,d))*.9; sp.visible=sp.material.opacity>.01; }
   (function(){ var yw=STARD[5][0], pp=STARD[5][1]; U.uVX.value.set(Math.cos(yw),0,-Math.sin(yw)); U.uVY.value.set(Math.sin(pp)*Math.sin(yw),Math.cos(pp),Math.sin(pp)*Math.cos(yw)); U.uVZ.value.set(Math.cos(pp)*Math.sin(yw),-Math.sin(pp),Math.cos(pp)*Math.cos(yw)); })();
   if(pgIdx<0) renderer.render(scene,cam); else bgFrame(now);
