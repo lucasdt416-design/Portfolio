@@ -168,7 +168,7 @@ body.pgopen #scroller{pointer-events:none}
   <a href="#" class="n">Lucas Thomas</a>
   <div class="r">
     <a class="hide-m" href="https://personal-portfolio-w6hr.onrender.com/Lucas-Thomas-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
-    <a class="btn" href="https://personal-portfolio-w6hr.onrender.com/" target="_blank" rel="noopener">Skip the tour →</a>
+    <a class="btn" id="skip" href="#contact">Skip the tour →</a>
   </div>
 </nav>
 <div id="prog" aria-hidden="true"><i></i></div>
@@ -1230,6 +1230,7 @@ function renderPg(i){
 }
 function openPg(i){ pgIdx=i; pgLast=document.activeElement; renderPg(i); pgEl.scrollTop=0; pgEl.classList.toggle('light',!!PG[i].light); document.getElementById('pgv').style.background=PG[i].light?'linear-gradient(90deg,rgba(239,229,211,.88) 0%,rgba(239,229,211,.6) 40%,rgba(239,229,211,0) 70%)':'linear-gradient(90deg,rgba(4,6,12,.88) 0%,rgba(4,6,12,.6) 42%,rgba(4,6,12,0) 72%)'; bgSet(PG[i].k,PG[i].bg,PG[i].glow,PG[i].sx); pgEl.classList.add('open'); pgX.classList.add('show'); document.body.classList.add('pgopen'); try{pgEl.focus({preventScroll:true});}catch(e){} cur.classList.remove('star'); }
 window.__openPg=openPg;
+var skipEl=document.getElementById('skip'); if(skipEl) skipEl.addEventListener('click',function(e){ e.preventDefault(); window.scrollTo(0,document.documentElement.scrollHeight); });
 function closePg(){ pgIdx=-1; pgEl.classList.remove('open'); pgX.classList.remove('show'); document.body.classList.remove('pgopen'); zoomEl.classList.remove('on'); try{pgLast&&pgLast.focus&&pgLast.focus({preventScroll:true});}catch(e){} }
 pgX.addEventListener('click',closePg);
 pgEl.addEventListener('click',function(e){
