@@ -378,10 +378,10 @@ html:not(.gl) .a-win{background:#efe5d3}
       <p class="eyebrow">Independent · 2026 – present</p>
       <h2 class="sp-title" data-nosplit>StockPulse</h2>
       <div class="why"><span class="why-k">why I built it</span><p>Following the market, I kept hitting the same wall. The news that actually moves a stock is scattered: a filing lands on the SEC site, the company posts a release, and five outlets rewrite the same story. Nothing tells you which one matters. Big firms pay for tools that sort this out. Everyone else just gets the noise. I wanted one place that pulls it all in, drops the repeats, and tells you plainly what's worth your attention. So I built it.</p></div>
-      <p>StockPulse is a full-stack news pipeline for the stock market. It pulls from SEC filings, company investor-relations feeds and Finnhub, and turns three noisy firehoses into one clean stream for a 30-company watchlist.</p>
+      <p>StockPulse is a full-stack news pipeline for the stock market. It pulls from SEC filings, company investor-relations feeds and Finnhub, and turns three noisy firehoses into one clean stream for a 100-company watchlist, the S&amp;P 100.</p>
       <div class="sp-row">
         <div class="sp-facts">
-          <ul class="chips" aria-label="Tech stack"><li>Python</li><li>JavaScript</li><li>GitHub Actions</li><li>Chart.js</li></ul>
+          <ul class="chips" aria-label="Tech stack"><li>Python</li><li>JavaScript</li><li>SQLite</li><li>Gemini API</li><li>Chart.js</li><li>GitHub Actions</li></ul>
         </div>
       </div>
       <div class="note note-m"><p class="hand">it's live. go poke it. <span class="tap">(tap the screenshot to zoom)</span></p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
@@ -392,7 +392,7 @@ html:not(.gl) .a-win{background:#efe5d3}
         <span class="tape tl"></span><span class="tape tr"></span>
         <div class="shot-in">
           <div class="shot-bar"><i></i><i></i><i></i><span>stock-news-dashboard.pages.dev</span></div>
-          <img src="img/p-home.webp" width="1200" height="646" alt="StockPulse home page: a 'What's on the agenda?' search with floating company score cards and the 30-company watchlist" loading="lazy">
+          <img src="img/p-home.webp" width="1200" height="646" alt="StockPulse home page: a 'What's on the agenda?' search with floating company score cards and the watchlist" loading="lazy">
         </div>
       </figure>
         <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">it's live. go poke it. <span class="tap">(tap to zoom)</span></p></div>
@@ -405,17 +405,17 @@ html:not(.gl) .a-win{background:#efe5d3}
     <div class="wrap sp-grid"><div class="col sp-col">
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span class="on">Sort</span><span>Score</span><span>Run</span></div>
       <h3>Duplicates out. Signal in.</h3>
-      <p>The same story shows up in five places at once. A deduplication engine collapses the repeats, then a rule-based classifier scores what's left from 0 to 10. The top stories get a plain-English takeaway.</p>
+      <p>The same story shows up in five places at once. A deduplication engine collapses the repeats, then a rule-based classifier scores what's left from 0 to 10, with the arithmetic shown. The top stories get a plain-English takeaway from Gemini, and a summary only shows if every number in it appears in the source.</p>
       <div class="sp-row">
         <div class="sp-facts">
-      <div class="funnel" aria-label="One recent pipeline run">
-        <div><b data-count="2112">2,112</b><span>items pulled in</span></div>
+      <div class="funnel" aria-label="Live pipeline totals">
+        <div><b data-count="1283">1,283</b><span>stories scored</span></div>
         <i aria-hidden="true">→</i>
-        <div><b data-count="1385">1,385</b><span>unique after dedup</span></div>
+        <div><b data-count="402">402</b><span>to read first</span></div>
         <i aria-hidden="true">→</i>
-        <div><b data-count="250">250</b><span>high priority (7+)</span></div>
+        <div><b data-count="10">10</b><span>story categories</span></div>
       </div>
-      <p class="fine">One recent run: 1,200 SEC filings, 162 company releases and 750 news articles.</p>
+      <p class="fine">Live totals from the dashboard. Insider trades, 8-Ks and 10-Q results are read straight from the SEC.</p>
         </div>
       </div>
       <div class="note note-m"><p class="hand">every story gets a score + a takeaway</p><svg class="doodle ar-desk" width="90" height="70"><use href="#d-arrow"/></svg><svg class="doodle ar-mob" width="30" height="46"><use href="#d-down"/></svg></div>
@@ -425,7 +425,7 @@ html:not(.gl) .a-win{background:#efe5d3}
         <span class="tape tl"></span><span class="tape tr"></span>
         <div class="shot-in">
           <div class="shot-bar"><i></i><i></i><i></i><span>stock-news-dashboard.pages.dev/news</span></div>
-          <img src="img/sp-feed.webp" width="590" height="500" alt="The Intelligence Feed: 1,079 scored items, with the top story scored 10 out of 10 and an executive takeaway" loading="lazy">
+          <img src="img/sp-feed.webp" width="590" height="500" alt="The Intelligence Feed: scored items, with the top story scored 10 out of 10 and an executive takeaway" loading="lazy">
         </div>
       </figure>
         <div class="note note-d"><svg class="doodle up" width="30" height="46"><use href="#d-down"/></svg><p class="hand">every story gets a score + a takeaway</p></div>
@@ -437,14 +437,14 @@ html:not(.gl) .a-win{background:#efe5d3}
   <section class="sec tall a-sp warm" data-scene="3" data-ch="03|StockPulse · Scoring">
     <div class="wrap sp-grid"><div class="col sp-col">
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span>Sort</span><span class="on">Score</span><span>Run</span></div>
-      <h3>30 companies, one picture.</h3>
-      <p>Scored stories roll up by company and sector, so the whole watchlist fits on one screen. Analytics pages chart it all with Chart.js: how fast disclosures are arriving, which tickers are getting hit, and what kind of news it is.</p>
+      <h3>100 companies, one picture.</h3>
+      <p>Every company in the S&amp;P 100 gets its own page, and scored stories roll up by company and sector. You can follow the ones you care about for a For you feed that learns from what you read. Analytics pages chart it all with Chart.js: how fast disclosures are arriving, which tickers are getting hit, and what kind of news it is.</p>
       <div class="sp-row">
         <div class="sp-facts">
       <div class="stats">
-        <div class="stat"><b data-count="1079">1,079</b><span>scored items in the feed</span></div>
-        <div class="stat"><b data-count="9">9</b><span>news categories</span></div>
-        <div class="stat"><b data-count="30">30</b><span>companies tracked</span></div>
+        <div class="stat"><b data-count="100">100</b><span>companies tracked</span></div>
+        <div class="stat"><b data-count="13">13</b><span>sectors</span></div>
+        <div class="stat"><b data-count="62">62</b><span>newsroom feeds</span></div>
       </div>
         </div>
       </div>
@@ -468,12 +468,12 @@ html:not(.gl) .a-win{background:#efe5d3}
     <div class="wrap sp-grid"><div class="col sp-col">
       <div class="sp-stage" aria-hidden="true"><span>Sources</span><span>Sort</span><span>Score</span><span class="on">Run</span></div>
       <h3>It keeps running.</h3>
-      <p>A CI/CD pipeline runs 56 automated tests before anything ships. A self-healing monitor catches failed daily data runs and recovers them on its own. Built across six-plus feature phases with a graduate-student co-developer.</p>
+      <p>A CI/CD pipeline runs 269 automated tests before anything ships. A watchdog checks every four hours and re-runs a missed daily update on its own. Built across dozens of merged pull requests with a graduate-student co-developer.</p>
       <div class="sp-row">
         <div class="sp-facts">
       <div class="stats">
-        <div class="stat"><b data-count="56">56</b><span>tests gate every deploy</span></div>
-        <div class="stat"><b data-count="6" data-suffix="+">6+</b><span>feature phases</span></div>
+        <div class="stat"><b data-count="269">269</b><span>tests gate every deploy</span></div>
+        <div class="stat"><b data-count="100">100</b><span>companies watched</span></div>
         <div class="stat"><b data-count="2">2</b><span>developers</span></div>
       </div>
         </div>
@@ -652,6 +652,7 @@ html:not(.gl) .a-win{background:#efe5d3}
       <div class="btns">
         <a class="btn" href="https://www.linkedin.com/in/lucas-thomas12" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a class="btn ghost resume-link" href="#contact" target="_blank" rel="noopener">Résumé ↗</a>
+        <a class="btn ghost" href="walkthrough/">Take the walkthrough →</a>
       </div>
       <p class="foot">© 2026 Lucas Thomas · Toronto · every dot on this page is one particle system, re-shaping itself as you scroll.</p>
     </div></div>
