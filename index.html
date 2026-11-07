@@ -162,7 +162,7 @@ p{margin:0 0 1rem}
 #zoom.on{display:flex}#zoom img{max-width:100%;max-height:100%}
 #cur.star{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(240,201,138,.18)}
 body.pgopen #scroller{pointer-events:none}
-@media (max-width:899px){#b3 .fine,#b4 .fine{display:none}.nums{flex-wrap:nowrap;gap:.9rem}.nums b{font-size:2rem}.nums div{min-width:0}.nums i{display:none}.nums span{font-size:.6rem;letter-spacing:.04em}#b3 h3{font-size:clamp(1.9rem,8.2vw,2.3rem)}#b3 .eyebrow{margin-bottom:.4rem}#b3 p{font-size:.98rem;line-height:1.5}#b4 p{font-size:.98rem;line-height:1.5}}
+@media (max-width:899px){#b15 h3{font-size:clamp(1.6rem,7.4vw,2rem)}#b15 .eyebrow{margin-bottom:.4rem}.aw{gap:.45rem;margin-top:.6rem}.aw b{font-size:.92rem}.aw span{font-size:.75rem;line-height:1.35}#b3 .fine,#b4 .fine{display:none}.nums{flex-wrap:nowrap;gap:.9rem}.nums b{font-size:2rem}.nums div{min-width:0}.nums i{display:none}.nums span{font-size:.6rem;letter-spacing:.04em}#b3 h3{font-size:clamp(1.9rem,8.2vw,2.3rem)}#b3 .eyebrow{margin-bottom:.4rem}#b3 p{font-size:.98rem;line-height:1.5}#b4 p{font-size:.98rem;line-height:1.5}}
 @media (max-width:800px){#pg .pgw{grid-template-columns:minmax(0,1fr);padding-top:5rem}}
 #pgbg,#pgv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 #pg .pgw{position:relative;z-index:2}
@@ -187,7 +187,7 @@ body.pgopen #scroller{pointer-events:none}
 <nav class="nav" aria-label="Site">
   <a href="#" class="n">Lucas Thomas</a>
   <div class="r">
-    <div class="links hide-m"><a href="#" data-s=".165">StockPulse</a><a href="#" data-s=".67">About</a><a href="#" data-s=".735">Awards</a><a href="#" data-s=".80">Projects</a><a href="#" data-s="1">Contact</a></div>
+    <div class="links hide-m"><a href="#" data-s=".112">Awards</a><a href="#" data-s=".165">StockPulse</a><a href="#" data-s=".67">About</a><a href="#" data-s=".80">Projects</a><a href="#" data-s="1">Contact</a></div>
     <a class="hide-m" href="Lucas-Thomas-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
     <a class="btn" id="skip" href="#contact">Skip the tour →</a>
   </div>
@@ -303,7 +303,7 @@ body.pgopen #scroller{pointer-events:none}
 </div></section>
 
 <section class="beat" id="b15" aria-label="Awards"><div class="in">
-  <p class="eyebrow">Awards · The mantel</p>
+  <p class="eyebrow">Awards · Just before the door</p>
   <h3>A few things<br>worth framing.</h3>
   <ul class="aw">
     <li><b>8th in Canada</b><span>Chem 13 News Exam, University of Waterloo · 27th worldwide, 2026</span></li>
@@ -356,9 +356,11 @@ function line(x0,y0,x1,y1,z,n,c,s,g,th){
 var AISLE_Z0=-52, L=5, M=22, AISLE_END=AISLE_Z0-L*M;   /* -162 */
 var HZ=-205;
 var SEC=[[.14,.19,-1],[.22,.27,1],[.30,.35,-1],[.38,.43,1]], MH=[3,9,15,21];
+function AWPIT(){return innerWidth<900?-.17:.03}
+function AWYAW(){return -1.05+(innerWidth<900?0:.36)}
 function AX_(){return Math.min(1,Math.max(.4,innerWidth/innerHeight/1.2))}
-var DZ=3.2*AX_(), YAWK=[[0,0,0]], mobile0=innerWidth<900, ALPHA=Math.atan2(4.1,3.2), GAMMA=mobile0?0:.35;
-var STOPS=[[0,16],[.04,13],[.11,-40],[.13,-52]];
+var DZ=3.2*AX_(), YAWK=[[0,0,0],[.088,0,0],[.1,AWYAW(),AWPIT()],[.124,AWYAW(),AWPIT()],[.138,0,0]], mobile0=innerWidth<900, ALPHA=Math.atan2(4.1,3.2), GAMMA=mobile0?0:.35;
+var STOPS=[[0,16],[.04,13],[.088,-27],[.1,-30],[.124,-30]];
 SEC.forEach(function(q,i){
   var zi=AISLE_Z0-L*MH[i]-L*.5, cz=zi+DZ, yw=-q[2]*(ALPHA-GAMMA);
   STOPS.push([q[0],cz+8],[q[0]+.012,cz+1.2*AX_()],[q[1]-.012,cz-1.2*AX_()],[q[1],cz-8]);
@@ -415,6 +417,72 @@ function buildDust(){
 }
 
 /* ---------- a particle door (arched for the first, rectangular for the mansion) ---------- */
+/* ---------- the awards nook: right before the door, the path turns right to a lit display ---------- */
+var AWC={x:13.0,z:-37.5,cam:-30};
+AWC.A=Math.atan2(-AWC.x,AWC.cam-AWC.z);
+function buildAwards(){
+  var G=12, cA=Math.cos(AWC.A), sA=Math.sin(AWC.A), CX=AWC.x, CZ=AWC.z, GOLD=[1,.8,.4], GOLD2=[1,.9,.62], WL=scale(WARM,.75), DL=scale(CREAM,.3), FL=-3.75, i, k, t;
+  function X(u,v){return CX+u*cA+v*sA} function Z(u,v){return CZ-u*sA+v*cA}
+  function pt(u,y,v,c,s){add(X(u,v),y,Z(u,v),c,s,G)}
+  function ln(u0,y0,v0,u1,y1,v1,c,s,kd){var len=Math.hypot(u1-u0,y1-y0,v1-v0), n=Math.max(4,Math.round(len*(kd||34)*D)),th=.05;
+    for(var j=0;j<n;j++){var q=R();pt(u0+(u1-u0)*q+(R()-.5)*th,y0+(y1-y0)*q+(R()-.5)*th,v0+(v1-v0)*q+(R()-.5)*th,c,s)}}
+  function bx(u0,u1,y0,y1,v0,v1,c,s,fill){
+    [[u0,y0,v0,u1,y0,v0],[u0,y1,v0,u1,y1,v0],[u0,y0,v1,u1,y0,v1],[u0,y1,v1,u1,y1,v1],[u0,y0,v0,u0,y1,v0],[u1,y0,v0,u1,y1,v0],[u0,y0,v1,u0,y1,v1],[u1,y0,v1,u1,y1,v1],[u0,y0,v0,u0,y0,v1],[u1,y0,v0,u1,y0,v1],[u0,y1,v0,u0,y1,v1],[u1,y1,v0,u1,y1,v1]].forEach(function(e){ln(e[0],e[1],e[2],e[3],e[4],e[5],c,s,30)});
+    var nf=Math.round((u1-u0)*(y1-y0)*(fill||26)*D); for(var j=0;j<nf;j++) pt(u0+R()*(u1-u0),y0+R()*(y1-y0),v1,scale(c,.4),1.1);
+    nf=Math.round((u1-u0)*(v1-v0)*(fill||26)*.6*D); for(j=0;j<nf;j++) pt(u0+R()*(u1-u0),y1,v0+R()*(v1-v0),scale(c,.45),1.1);
+  }
+  function arc(cu,cy,r,a0,a1,v,c,s,kd){var n=Math.max(6,Math.round(Math.abs(a1-a0)*r*(kd||48)*D)); for(var j=0;j<n;j++){var a=a0+(a1-a0)*R(); pt(cu+Math.cos(a)*r+(R()-.5)*.04,cy+Math.sin(a)*r+(R()-.5)*.04,v+(R()-.5)*.05,c,s)}}
+  function lathe(cu,cv,y0,prof,c,s,shellN,glass){
+    var j,a;
+    for(j=0;j<prof.length;j++){ var r=prof[j][0], y=y0+prof[j][1], n=Math.max(8,Math.round(6.283*r*40*D)); for(var q=0;q<n;q++){a=R()*6.283;pt(cu+Math.cos(a)*r,y+(R()-.5)*.03,cv+Math.sin(a)*r,c,s)} }
+    for(j=1;j<prof.length;j++){ var p0=prof[j-1],p1=prof[j], seg=Math.max(2,Math.round(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])*(glass?14:30)*D));
+      for(var m=0;m<seg*2;m++){ var tt=R(), rr=p0[0]+(p1[0]-p0[0])*tt, yy=y0+p0[1]+(p1[1]-p0[1])*tt; a=R()*6.283; pt(cu+Math.cos(a)*rr,yy,cv+Math.sin(a)*rr,scale(c,glass?.5:.62),1.15); }
+      for(var mm=0;mm<8;mm++){ a=mm*.7854+.39; ln2(cu+Math.cos(a)*p0[0],y0+p0[1],cv+Math.sin(a)*p0[0],cu+Math.cos(a)*p1[0],y0+p1[1],cv+Math.sin(a)*p1[0],scale(c,.8),s*.9); } }
+  }
+  function ln2(u0,y0,v0,u1,y1,v1,c,s){ln(u0,y0,v0,u1,y1,v1,c,s,24)}
+  /* back wall: a tall arched niche */
+  var HW=4.3, SY=.6, WV=-2.5, PI=Math.PI;
+  ln(-HW,FL,WV,-HW,SY,WV,CREAM,1.6,40); ln(HW,FL,WV,HW,SY,WV,CREAM,1.6,40); arc(0,SY,HW,0,PI,WV,CREAM,1.7,70);
+  ln(-HW+.35,FL,WV,-HW+.35,SY,WV,scale(CREAM,.55),1.2,24); ln(HW-.35,FL,WV,HW-.35,SY,WV,scale(CREAM,.55),1.2,24); arc(0,SY,HW-.35,0,PI,WV,scale(CREAM,.55),1.2,40);
+  for(i=0,k=Math.round(2600*D);i<k;){var uu=(R()*2-1)*HW, yy=FL+R()*(SY+HW-FL); if(yy>SY&&uu*uu+(yy-SY)*(yy-SY)>HW*HW) continue; pt(uu,yy,WV+(R()-.5)*.12,mix(WARM,AMB,R()*.7),.9); i++;}
+  /* dais + floor rings */
+  bx(-4.8,4.8,-4,FL,-2.6,3.0,WL,1.4,16);
+  for(i=1;i<=3;i++){ var rr=i*1.15+.4; for(k=0,t=Math.round(rr*70*D);k<t;k++){var a=R()*6.283; pt(Math.cos(a)*rr,FL+.01,Math.sin(a)*rr+.2,scale(GOLD,.34/i+.1),1.2);} }
+  /* three plinths */
+  bx(-.95,.95,FL,-1.3,-.95,.95,WL,1.5,34); bx(-1.15,1.15,-1.3,-1.12,-1.15,1.15,CREAM,1.6,30);
+  ln(-.95,-2.2,.95,.95,-2.2,.95,scale(CREAM,.55),1.1,26);
+  [-2.7,2.7].forEach(function(cu){ bx(cu-.7,cu+.7,FL,-2.4,-.7,.7,WL,1.5,34); bx(cu-.86,cu+.86,-2.4,-2.25,-.86,.86,CREAM,1.6,30); });
+  /* trophy (centre) */
+  lathe(0,0,-1.12,[[.78,0],[.78,.13],[.5,.13],[.45,.3],[.13,.42],[.12,1.05],[.34,1.14],[.62,1.5],[.8,2.1],[.76,2.14]],GOLD,1.7,0);
+  [-1,1].forEach(function(sd){ arc(sd*.95,-1.12+1.75,.5,sd>0?-1.2:PI-1.2*0-PI*.62,sd>0?1.2:PI+1.2,0,GOLD2,1.6,70); });
+  /* flask (left): chemistry */
+  var FU=-2.7, FB=-2.25;
+  lathe(FU,0,FB,[[.72,.02],[.66,.3],[.5,.6],[.28,.88],[.2,.98],[.2,1.42],[.28,1.5],[.24,1.54]],[.55,.95,.9],1.6,1);
+  for(i=0,k=Math.round(260*D);i<k;){var rr2=R()*.6, yy2=.06+R()*.4, a2=R()*6.283; if(rr2>.7-yy2*.5) continue; pt(FU+Math.cos(a2)*rr2,FB+yy2,Math.sin(a2)*rr2,TEAL,1.3); i++}
+  for(k=0;k<30;k++){var a3=R()*6.283; pt(FU+Math.cos(a3)*.5,FB+.46,Math.sin(a3)*.5,[.5,1,.9],1.5)}
+  [[-.15,.8],[.08,1.1],[-.05,1.3]].forEach(function(b){ arc(FU+b[0],FB+b[1],.05,0,6.283,0,[.7,1,.95],1.3,40) });
+  /* medal (right) on a little stand */
+  var MU=2.7, MB=-2.25, MY=MB+1.05;
+  ln(MU,MB,-.3,MU,MB+2.55,-.3,WL,1.4,30); ln(MU,MB+2.55,-.3,MU,MB+2.55,0,WL,1.4,30);
+  arc(MU,MY,.62,0,6.283,0,GOLD,1.8,70); arc(MU,MY,.5,0,6.283,0,GOLD2,1.3,60);
+  for(i=0,k=Math.round(300*D);i<k;i++){var ra=Math.sqrt(R())*.6,aa=R()*6.283; pt(MU+Math.cos(aa)*ra,MY+Math.sin(aa)*ra,0,scale(GOLD,.45),1.1)}
+  (function(){var pts=[];for(var q=0;q<10;q++){var rr3=q%2?.15:.36,a4=-PI/2+q*PI/5;pts.push([Math.cos(a4)*rr3,Math.sin(a4)*rr3])}
+    for(var q2=0;q2<10;q2++){var p0=pts[q2],p1=pts[(q2+1)%10]; ln(MU+p0[0],MY+p0[1],0,MU+p1[0],MY+p1[1],0,GOLD2,1.7,40)}})();
+  ln(MU-.34,MY+.58,0,MU-.14,MY+1.38,0,RED,1.5,40); ln(MU+.34,MY+.58,0,MU+.14,MY+1.38,0,RED,1.5,40); ln(MU-.14,MY+1.38,0,MU+.14,MY+1.38,0,RED,1.5,40);
+  /* three wall plaques */
+  var PY=2.35, PW=.9, PH=.62;
+  [-2.55,0,2.55].forEach(function(cu,idx){
+    ln(cu-PW,PY-PH,WV+.1,cu+PW,PY-PH,WV+.1,CREAM,1.6,40); ln(cu-PW,PY+PH,WV+.1,cu+PW,PY+PH,WV+.1,CREAM,1.6,40); ln(cu-PW,PY-PH,WV+.1,cu-PW,PY+PH,WV+.1,CREAM,1.6,40); ln(cu+PW,PY-PH,WV+.1,cu+PW,PY+PH,WV+.1,CREAM,1.6,40);
+    ln(cu-PW+.1,PY-PH+.1,WV+.1,cu+PW-.1,PY-PH+.1,WV+.1,scale(CREAM,.5),1.1,26); ln(cu-PW+.1,PY+PH-.1,WV+.1,cu+PW-.1,PY+PH-.1,WV+.1,scale(CREAM,.5),1.1,26);
+    for(var nn=0,kk=Math.round(PW*PH*4*55*D);nn<kk;nn++) pt(cu-PW+R()*PW*2,PY-PH+R()*PH*2,WV+.1,scale(AMB,.32),1);
+    ln(cu-.55,PY-.36,WV+.1,cu+.55,PY-.36,WV+.1,GOLD2,1.2,30); ln(cu-.35,PY-.24,WV+.1,cu+.35,PY-.24,WV+.1,GOLD2,1,30);
+    if(idx===0){ ln(cu-.18,PY+.4,WV+.1,cu-.18,PY-.08,WV+.1,GOLD,1.6,40); ln(cu-.18,PY+.4,WV+.1,cu+.28,PY+.16,WV+.1,GOLD,1.6,40); ln(cu-.18,PY-.08,WV+.1,cu+.28,PY+.16,WV+.1,GOLD,1.6,40); }
+    else if(idx===1){ arc(cu,PY+.16,.22,0,6.283,WV+.1,GOLD,1.6,70); for(var gt=0;gt<8;gt++){var ga=gt*PI/4; ln(cu+Math.cos(ga)*.22,PY+.16+Math.sin(ga)*.22,WV+.1,cu+Math.cos(ga)*.33,PY+.16+Math.sin(ga)*.33,WV+.1,GOLD,1.6,40)} }
+    else { var sp=[];for(var q=0;q<10;q++){var rr4=q%2?.1:.25,a5=-PI/2+q*PI/5;sp.push([Math.cos(a5)*rr4,Math.sin(a5)*rr4])} for(var q3=0;q3<10;q3++){var s0=sp[q3],s1=sp[(q3+1)%10]; ln(cu+s0[0],PY+.18+s0[1],WV+.1,cu+s1[0],PY+.18+s1[1],WV+.1,GOLD,1.6,40)} }
+  });
+  /* spotlight cone */
+  for(i=0,k=Math.round(1700*D);i<k;i++){ var yy3=-3.7+R()*10.2, tt3=(6.5-yy3)/10.2, rr5=3.3*tt3*(R()<.35?1:Math.sqrt(R())), a6=R()*6.283; pt(Math.cos(a6)*rr5,yy3,Math.sin(a6)*rr5+.2,scale(CREAM,R()<.35?.5:.22),1.1) }
+}
 function buildDoor(cz,hw,yb,ys,arch,tone){
   var rad=arch?hw:0, Ls=ys-yb, La=arch?Math.PI*rad:2*hw, T=2*Ls+La, top=ys+rad;
   function onPath(u){
@@ -836,7 +904,7 @@ function tickerTex(txt,wide){
   return new THREE.CanvasTexture(c);
 }
 function build(){
-  buildWord(ASP<1.1?['LUCAS','THOMAS']:['LUCAS THOMAS'],0,0,8500); buildDust(); buildDoor(-46,3.4,-4,2.6,true,AMB); buildAisle(); buildMansion(); buildRoad(); buildCar(); buildInterior(); buildStars(); buildVortex();
+  buildWord(ASP<1.1?['LUCAS','THOMAS']:['LUCAS THOMAS'],0,0,8500); buildDust(); buildDoor(-46,3.4,-4,2.6,true,AMB); buildAwards(); buildAisle(); buildMansion(); buildRoad(); buildCar(); buildInterior(); buildStars(); buildVortex();
   var g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
   g.setAttribute('aCol',new THREE.Float32BufferAttribute(col,3));
@@ -977,8 +1045,8 @@ function resize(){
 addEventListener('resize',function(){ if(built) resize(); });
 
 /* ---------- scroll → world ---------- */
-var BT=[['b0',0,.04],['b1',.05,.11],['b2',.14,.19],['b3',.22,.27],['b4',.30,.35],['b5',.38,.43],['b6',.455,.53],['b7',.64,.70]];
-STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]); BT.push(['b15',.705,.768]);
+var BT=[['b0',0,.04],['b1',.045,.092],['b2',.14,.19],['b3',.22,.27],['b4',.30,.35],['b5',.38,.43],['b6',.455,.53],['b7',.64,.70]];
+STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]); BT.push(['b15',.098,.134]);
 var beats=BT.map(function(x){var el=document.getElementById(x[0]);return {el:el,a:x[1],b:x[2],in:el.querySelector('.in'),r:el.classList.contains('r')}});
 var scrim=document.getElementById('scrim'), scrimR=document.getElementById('scrimR'), flash=document.getElementById('flash'), progI=document.querySelector('#prog i'), chap=document.getElementById('chap'), cur=document.getElementById('cur');
 function prog(){var m=document.documentElement.scrollHeight-innerHeight;return m>0?Math.min(1,Math.max(0,scrollY/m)):0}
@@ -1333,7 +1401,7 @@ function frame(now){
   var f1=Math.exp(-Math.pow((z+46)/2.2,2)), f2=Math.max(Math.exp(-Math.pow((z-HZ)/3.4,2)),Math.exp(-Math.pow((z-IZ1)/3.2,2))*(s<.8?1:0),Math.exp(-Math.pow((s-.954)/.007,2)));
   flash.style.opacity=Math.min(.95,Math.max(f1,f2));
   progI.style.transform='scaleY('+s.toFixed(4)+')';
-  var cn=s<.045?'Opening':(s<.13?'The door':(s<.44?'StockPulse':(s<.6?'The drive':(s<.75?'Inside':(s<.93?'Stargazing':'Space')))));
+  var cn=s<.045?'Opening':(s<.09?'The door':(s<.138?'Awards':(s<.44?'StockPulse':(s<.6?'The drive':(s<.75?'Inside':(s<.93?'Stargazing':'Space'))))));
   if(cn!==lastChap){lastChap=cn;chap.innerHTML='<b>'+cn+'</b><i></i><span>scroll</span>';}
   curX+=(tcurX-curX)*.2; curY+=(tcurY-curY)*.2; cur.style.transform='translate('+curX.toFixed(1)+'px,'+curY.toFixed(1)+'px)';
   requestAnimationFrame(frame);
