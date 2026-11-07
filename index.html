@@ -62,7 +62,9 @@ a{color:inherit}
   padding:calc(env(safe-area-inset-top,0px) + 18px) var(--pad) 0;font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
 .nav a{text-decoration:none;opacity:.82;transition:opacity .2s}
 .nav a:hover,.nav a:focus-visible{opacity:1}
-.nav .r{display:flex;gap:1.4rem}
+.nav .r{display:flex;gap:1.4rem;align-items:center}
+.nav .links{display:flex;gap:1.5rem;margin-right:.6rem}
+.nav .links a.cur{opacity:1;color:var(--acc)}
 .nav .btn{border:1px solid rgba(236,229,214,.45);padding:.55rem .8rem;border-radius:2px}
 #prog{position:fixed;z-index:10;right:14px;top:22vh;bottom:22vh;width:2px;background:rgba(236,229,214,.12)}
 #prog i{position:absolute;inset:0;background:var(--acc);transform-origin:top;transform:scaleY(0)}
@@ -89,6 +91,10 @@ p{margin:0 0 1rem}
 .why .k{display:block;font:500 .7rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:.5rem}
 .hand{font:400 1.5rem/1.1 var(--f-hand);color:var(--acc);margin:0 0 .4rem}
 .fine{font-size:.9rem;color:var(--dim)}
+.aw{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.7rem}
+.aw li{display:flex;flex-direction:column;gap:.15rem;border-left:1px solid rgba(236,229,214,.25);padding-left:.9rem}
+.aw b{font-weight:500;font-size:1.02rem}
+.aw span{font-size:.85rem;color:var(--dim)}
 .nums{display:flex;gap:1.1rem;align-items:flex-start;margin:1.1rem 0 .8rem;flex-wrap:wrap}
 .nums div{min-width:5.2rem}
 .nums b{display:block;font:900 clamp(2.4rem,4.6vw,3.6rem)/.95 var(--f-display);color:var(--paper)}
@@ -125,7 +131,7 @@ p{margin:0 0 1rem}
   h3{font-size:clamp(2rem,10vw,2.8rem)}
   .nums{gap:.5rem}.nums b{font-size:2rem}
   .nums div{min-width:0}
-  .nav .r a.hide-m{display:none}
+  .nav .r a.hide-m,.nav .links{display:none}
   #prog{display:none}
   #chap{display:none}
   p{margin-bottom:.8rem}
@@ -181,6 +187,7 @@ body.pgopen #scroller{pointer-events:none}
 <nav class="nav" aria-label="Site">
   <a href="#" class="n">Lucas Thomas</a>
   <div class="r">
+    <div class="links hide-m"><a href="#" data-s=".165">StockPulse</a><a href="#" data-s=".67">About</a><a href="#" data-s=".735">Awards</a><a href="#" data-s=".80">Projects</a><a href="#" data-s="1">Contact</a></div>
     <a class="hide-m" href="Lucas-Thomas-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
     <a class="btn" id="skip" href="#contact">Skip the tour →</a>
   </div>
@@ -293,6 +300,19 @@ body.pgopen #scroller{pointer-events:none}
   <p>The one that keeps running: a news pipeline that dedupes, scores and watches 100 companies on its own, with a live dashboard on top.</p>
   <p class="hand">follow the brightest one.</p>
   <div class="btns"><a class="btn2 solid" href="https://stock-news-dashboard.pages.dev" target="_blank" rel="noopener">Open the live dashboard ↗</a></div>
+</div></section>
+
+<section class="beat" id="b15" aria-label="Awards"><div class="in">
+  <p class="eyebrow">Awards · The mantel</p>
+  <h3>A few things<br>worth framing.</h3>
+  <ul class="aw">
+    <li><b>8th in Canada</b><span>Chem 13 News Exam, University of Waterloo · 27th worldwide, 2026</span></li>
+    <li><b>Best Science Award</b><span>SEEK Jr. Science Fair</span></li>
+    <li><b>Best Video Presentation</b><span>SHAD Canada, 2024</span></li>
+    <li><b>CETA Robotics</b><span>3rd Overall · 1st Creativity · 2nd Obstacle Avoidance</span></li>
+    <li><b>High Achiever Medal</b><span>UWaterloo Chem 13</span></li>
+    <li><b>Northern Design Technology Award</b><span>&amp; Ontario Scholar, 2026</span></li>
+  </ul>
 </div></section>
 
 <section class="beat" id="b14" aria-label="Contact"><div class="in">
@@ -958,7 +978,7 @@ addEventListener('resize',function(){ if(built) resize(); });
 
 /* ---------- scroll → world ---------- */
 var BT=[['b0',0,.04],['b1',.05,.11],['b2',.14,.19],['b3',.22,.27],['b4',.30,.35],['b5',.38,.43],['b6',.455,.53],['b7',.64,.70]];
-STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]);
+STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]); BT.push(['b15',.705,.768]);
 var beats=BT.map(function(x){var el=document.getElementById(x[0]);return {el:el,a:x[1],b:x[2],in:el.querySelector('.in'),r:el.classList.contains('r')}});
 var scrim=document.getElementById('scrim'), scrimR=document.getElementById('scrimR'), flash=document.getElementById('flash'), progI=document.querySelector('#prog i'), chap=document.getElementById('chap'), cur=document.getElementById('cur');
 function prog(){var m=document.documentElement.scrollHeight-innerHeight;return m>0?Math.min(1,Math.max(0,scrollY/m)):0}
@@ -1243,6 +1263,7 @@ function renderPg(i){
 }
 function openPg(i){ pgIdx=i; pgLast=document.activeElement; renderPg(i); pgEl.scrollTop=0; pgEl.classList.toggle('light',!!PG[i].light); document.getElementById('pgv').style.background=PG[i].light?'linear-gradient(90deg,rgba(239,229,211,.88) 0%,rgba(239,229,211,.6) 40%,rgba(239,229,211,0) 70%)':'linear-gradient(90deg,rgba(4,6,12,.88) 0%,rgba(4,6,12,.6) 42%,rgba(4,6,12,0) 72%)'; bgSet(PG[i].k,PG[i].bg,PG[i].glow,PG[i].sx); pgEl.classList.add('open'); pgX.classList.add('show'); document.body.classList.add('pgopen'); try{pgEl.focus({preventScroll:true});}catch(e){} cur.classList.remove('star'); }
 window.__openPg=openPg;
+document.querySelectorAll('.nav .links a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo(0,(document.documentElement.scrollHeight-innerHeight)*parseFloat(a.getAttribute('data-s')))})});
 var skipEl=document.getElementById('skip'); if(skipEl) skipEl.addEventListener('click',function(e){ e.preventDefault(); window.scrollTo(0,document.documentElement.scrollHeight); });
 function closePg(){ pgIdx=-1; pgEl.classList.remove('open'); pgX.classList.remove('show'); document.body.classList.remove('pgopen'); zoomEl.classList.remove('on'); try{pgLast&&pgLast.focus&&pgLast.focus({preventScroll:true});}catch(e){} }
 pgX.addEventListener('click',closePg);
@@ -1306,7 +1327,7 @@ function frame(now){
     beatVals[i]=v; b.el.style.opacity=v; b.el.style.visibility=v<.01?'hidden':'visible';
     b.el.classList.toggle('on',v>.5);
     b.in.style.transform='translateY('+((1-v)*22).toFixed(1)+'px)';
-    if(i>=2&&i<=14){ if(b.r) scR=Math.max(scR,v); else sc=Math.max(sc,v); }
+    if(i>=2){ if(b.r) scR=Math.max(scR,v); else sc=Math.max(sc,v); }
   }
   scrim.style.opacity=sc; scrimR.style.opacity=scR;
   var f1=Math.exp(-Math.pow((z+46)/2.2,2)), f2=Math.max(Math.exp(-Math.pow((z-HZ)/3.4,2)),Math.exp(-Math.pow((z-IZ1)/3.2,2))*(s<.8?1:0),Math.exp(-Math.pow((s-.954)/.007,2)));
