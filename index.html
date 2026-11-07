@@ -91,10 +91,9 @@ p{margin:0 0 1rem}
 .why .k{display:block;font:500 .7rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:.5rem}
 .hand{font:400 1.5rem/1.1 var(--f-hand);color:var(--acc);margin:0 0 .4rem}
 .fine{font-size:.9rem;color:var(--dim)}
-.aw{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.7rem}
-.aw li{display:flex;flex-direction:column;gap:.15rem;border-left:1px solid rgba(236,229,214,.25);padding-left:.9rem}
-.aw b{font-weight:500;font-size:1.02rem}
-.aw span{font-size:.85rem;color:var(--dim)}
+.more{list-style:none;margin:1.1rem 0 0;padding:0;display:grid;gap:.5rem;font-size:.98rem}
+.more li{border-left:1px solid rgba(236,229,214,.28);padding-left:.8rem}
+.more b{font-weight:500}
 .nums{display:flex;gap:1.1rem;align-items:flex-start;margin:1.1rem 0 .8rem;flex-wrap:wrap}
 .nums div{min-width:5.2rem}
 .nums b{display:block;font:900 clamp(2.4rem,4.6vw,3.6rem)/.95 var(--f-display);color:var(--paper)}
@@ -162,7 +161,7 @@ p{margin:0 0 1rem}
 #zoom.on{display:flex}#zoom img{max-width:100%;max-height:100%}
 #cur.star{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(240,201,138,.18)}
 body.pgopen #scroller{pointer-events:none}
-@media (max-width:899px){#b15 h3{font-size:clamp(1.6rem,7.4vw,2rem)}#b15 .eyebrow{margin-bottom:.4rem}.aw{gap:.45rem;margin-top:.6rem}.aw b{font-size:.92rem}.aw span{font-size:.75rem;line-height:1.35}#b3 .fine,#b4 .fine{display:none}.nums{flex-wrap:nowrap;gap:.9rem}.nums b{font-size:2rem}.nums div{min-width:0}.nums i{display:none}.nums span{font-size:.6rem;letter-spacing:.04em}#b3 h3{font-size:clamp(1.9rem,8.2vw,2.3rem)}#b3 .eyebrow{margin-bottom:.4rem}#b3 p{font-size:.98rem;line-height:1.5}#b4 p{font-size:.98rem;line-height:1.5}}
+@media (max-width:899px){#b7 .fine{display:none}#b7 h3{font-size:clamp(1.7rem,8vw,2.2rem)}#b7 p{font-size:.95rem;line-height:1.45}#b7 .hand{font-size:1.05rem}#b3 .fine,#b4 .fine{display:none}.nums{flex-wrap:nowrap;gap:.9rem}.nums b{font-size:2rem}.nums div{min-width:0}.nums i{display:none}.nums span{font-size:.6rem;letter-spacing:.04em}#b3 h3{font-size:clamp(1.9rem,8.2vw,2.3rem)}#b3 .eyebrow{margin-bottom:.4rem}#b3 p{font-size:.98rem;line-height:1.5}#b4 p{font-size:.98rem;line-height:1.5}}
 @media (max-width:800px){#pg .pgw{grid-template-columns:minmax(0,1fr);padding-top:5rem}}
 #pgbg,#pgv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 #pg .pgw{position:relative;z-index:2}
@@ -187,7 +186,7 @@ body.pgopen #scroller{pointer-events:none}
 <nav class="nav" aria-label="Site">
   <a href="#" class="n">Lucas Thomas</a>
   <div class="r">
-    <div class="links hide-m"><a href="#" data-s=".112">Awards</a><a href="#" data-s=".165">StockPulse</a><a href="#" data-s=".67">About</a><a href="#" data-s=".80">Projects</a><a href="#" data-s="1">Contact</a></div>
+    <div class="links hide-m"><a href="#" data-s=".665">Awards</a><a href="#" data-s=".165">StockPulse</a><a href="#" data-s=".67">About</a><a href="#" data-s=".80">Projects</a><a href="#" data-s="1">Contact</a></div>
     <a class="hide-m" href="Lucas-Thomas-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
     <a class="btn" id="skip" href="#contact">Skip the tour →</a>
   </div>
@@ -256,6 +255,7 @@ body.pgopen #scroller{pointer-events:none}
   <p class="eyebrow">Inside · A bit about me</p>
   <h3>Make yourself<br>at home.</h3>
   <p>I'm a first-year in TrackOne Engineering at the University of Toronto. I like things that have to actually keep running: data pipelines, cars, turbines, robots. I'm looking for a Summer 2027 internship.</p>
+  <p class="fine">My three favourite wins are on the trophy shelf, just to the right.</p>
   <p class="hand">the rest of my projects are out back, under the stars.</p>
 </div></section>
 
@@ -302,19 +302,6 @@ body.pgopen #scroller{pointer-events:none}
   <div class="btns"><a class="btn2 solid" href="https://stock-news-dashboard.pages.dev" target="_blank" rel="noopener">Open the live dashboard ↗</a></div>
 </div></section>
 
-<section class="beat" id="b15" aria-label="Awards"><div class="in">
-  <p class="eyebrow">Awards · Just before the door</p>
-  <h3>A few things<br>worth framing.</h3>
-  <ul class="aw">
-    <li><b>8th in Canada</b><span>Chem 13 News Exam, University of Waterloo · 27th worldwide, 2026</span></li>
-    <li><b>Best Science Award</b><span>SEEK Jr. Science Fair</span></li>
-    <li><b>Best Video Presentation</b><span>SHAD Canada, 2024</span></li>
-    <li><b>CETA Robotics</b><span>3rd Overall · 1st Creativity · 2nd Obstacle Avoidance</span></li>
-    <li><b>High Achiever Medal</b><span>UWaterloo Chem 13</span></li>
-    <li><b>Northern Design Technology Award</b><span>&amp; Ontario Scholar, 2026</span></li>
-  </ul>
-</div></section>
-
 <section class="beat" id="b14" aria-label="Contact"><div class="in">
   <p class="eyebrow">Contact</p>
   <h3>Let's build something that keeps running.</h3>
@@ -355,12 +342,11 @@ function line(x0,y0,x1,y1,z,n,c,s,g,th){
 /* ---------- world layout ---------- */
 var AISLE_Z0=-52, L=5, M=22, AISLE_END=AISLE_Z0-L*M;   /* -162 */
 var HZ=-205;
+var AWK1=[.65,-.5,0], AWK2=[.69,-.5,0];
 var SEC=[[.14,.19,-1],[.22,.27,1],[.30,.35,-1],[.38,.43,1]], MH=[3,9,15,21];
-function AWPIT(){return innerWidth<900?-.17:.03}
-function AWYAW(){return -1.05+(innerWidth<900?0:.36)}
 function AX_(){return Math.min(1,Math.max(.4,innerWidth/innerHeight/1.2))}
-var DZ=3.2*AX_(), YAWK=[[0,0,0],[.088,0,0],[.1,AWYAW(),AWPIT()],[.124,AWYAW(),AWPIT()],[.138,0,0]], mobile0=innerWidth<900, ALPHA=Math.atan2(4.1,3.2), GAMMA=mobile0?0:.35;
-var STOPS=[[0,16],[.04,13],[.088,-27],[.1,-30],[.124,-30]];
+var DZ=3.2*AX_(), YAWK=[[0,0,0]], mobile0=innerWidth<900, ALPHA=Math.atan2(4.1,3.2), GAMMA=mobile0?0:.35;
+var STOPS=[[0,16],[.04,13],[.11,-40],[.13,-52]];
 SEC.forEach(function(q,i){
   var zi=AISLE_Z0-L*MH[i]-L*.5, cz=zi+DZ, yw=-q[2]*(ALPHA-GAMMA);
   STOPS.push([q[0],cz+8],[q[0]+.012,cz+1.2*AX_()],[q[1]-.012,cz-1.2*AX_()],[q[1],cz-8]);
@@ -368,8 +354,8 @@ SEC.forEach(function(q,i){
 });
 /* the car on the driveway to the left */
 var CARX=-12.5, CARZ=HZ+15, CAMZ=mobile0?HZ+42:HZ+28, CAR_ALPHA=Math.atan2(-CARX,CAMZ-CARZ), CAR_YAW=CAR_ALPHA-(mobile0?0:.35);
-STOPS.push([.455,CAMZ],[.53,CAMZ-2],[.575,-195],[.605,-205],[.63,-222],[.64,-226],[.70,-236],[.725,-250],[.745,-261],[.765,-270],[.925,-282]);
-YAWK.push([.44,0,0],[.46,CAR_YAW,0],[.50,CAR_YAW,0],[.55,CAR_YAW+.5,0],[.585,0,0],[.63,0,0],[.65,-.5,0],[.69,-.5,0],[.72,0,0],[.76,0,0]);
+STOPS.push([.455,CAMZ],[.53,CAMZ-2],[.575,-195],[.605,-205],[.63,-222],[.645,-224],[.685,-225.5],[.70,-236],[.725,-250],[.745,-261],[.765,-270],[.925,-282]);
+YAWK.push([.44,0,0],[.46,CAR_YAW,0],[.50,CAR_YAW,0],[.55,CAR_YAW+.5,0],[.585,0,0],[.63,0,0],AWK1,AWK2,[.72,0,0],[.76,0,0]);
 /* stargazing: six projects as stars, then the dive into space */
 var DECK=[0,0,-282], SDIST=80;
 var STARD=[[.55,.38],[.15,.52],[-.2,.7],[-.6,.5],[-.45,.68],[.05,.74]];
@@ -385,7 +371,8 @@ function zAt(s){for(var i=1;i<STOPS.length;i++){if(s<=STOPS[i][0]){var a=STOPS[i
 function ss(a,b,x){var t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t)}
 function bump(s,a,b,w){return ss(a,a+w,s)*(1-ss(b-w,b,s))}
 var AX=Math.min(1,Math.max(.4,ASP/1.2));           /* aisle width factor for narrow screens */
-var HX=Math.min(1,Math.max(.55,ASP/1.2));          /* house width factor */
+var HX=Math.min(1,Math.max(.55,ASP/1.2));
+(function(){var IW=10.5*Math.max(.62,HX), dx=IW-2.3, dz=(-214-17)-(-225.5), b=Math.atan2(-dx,-dz); AWK1[1]=AWK2[1]=b+(innerWidth<900?0:.36); AWK1[2]=AWK2[2]=innerWidth<900?-.42:0.02; window.__awb=b;})();          /* house width factor */
 var innerX=4.1*AX, depth=2.3*AX, BOARDS=[-3.4,-1.1,1.2,3.5];
 var IMGS=[{f:'img/sp-home.webp',a:1.6},{f:'img/sp-feed.webp',a:1.6},{f:'img/sp-dir.webp',a:1.6},{f:'img/sp-analytics.webp',a:1.6}];
 
@@ -418,12 +405,11 @@ function buildDust(){
 
 /* ---------- a particle door (arched for the first, rectangular for the mansion) ---------- */
 /* ---------- the awards nook: right before the door, the path turns right to a lit display ---------- */
-var AWC={x:13.0,z:-37.5,cam:-30};
-AWC.A=Math.atan2(-AWC.x,AWC.cam-AWC.z);
-function buildAwards(){
-  var G=12, cA=Math.cos(AWC.A), sA=Math.sin(AWC.A), CX=AWC.x, CZ=AWC.z, GOLD=[1,.8,.4], GOLD2=[1,.9,.62], WL=scale(WARM,.75), DL=scale(CREAM,.3), FL=-3.75, i, k, t;
+var AW={K:.8,cz:0};
+function buildAwards(IW){
+  AW.cx=IW-2.3; AW.cz=IZ0-17; var K=AW.K, G=18, cA=0, sA=-1, CX=AW.cx, CZ=IZ0-17, GOLD=[1,.8,.4], GOLD2=[1,.9,.62], WL=scale(WARM,.75), DL=scale(CREAM,.3), FL=-3.75, i, k, t;
   function X(u,v){return CX+u*cA+v*sA} function Z(u,v){return CZ-u*sA+v*cA}
-  function pt(u,y,v,c,s){add(X(u,v),y,Z(u,v),c,s,G)}
+  function pt(u,y,v,c,s){u*=K;v*=K;y=-4+(y+4)*K;add(X(u,v),y,Z(u,v),c,s,G)}
   function ln(u0,y0,v0,u1,y1,v1,c,s,kd){var len=Math.hypot(u1-u0,y1-y0,v1-v0), n=Math.max(4,Math.round(len*(kd||34)*D)),th=.05;
     for(var j=0;j<n;j++){var q=R();pt(u0+(u1-u0)*q+(R()-.5)*th,y0+(y1-y0)*q+(R()-.5)*th,v0+(v1-v0)*q+(R()-.5)*th,c,s)}}
   function bx(u0,u1,y0,y1,v0,v1,c,s,fill){
@@ -787,6 +773,7 @@ function buildInterior(){
   hl(-IW,-4,DZ1,IW,-4,DZ1,12); hl(-IW,-2.8,DZ1,IW,-2.8,DZ1,12); for(x=-IW;x<=IW+.01;x+=3) hl(x,-4,DZ1,x,-2.8,DZ1,6);
   n=Math.round(2000*D); for(i=0;i<n;i++) add((R()-.5)*120,-4.05,DZ1-R()*70,scale(LEAF2,.5),.95,7);
 
+  buildAwards(IW);
   /* backyard: hard outlines, a fire pit, a telescope, string lights, a fence, and the "up next" cube */
   (function(){
     var CUBEX=-IW*.52, CUBEZ=DZ0-7.5, PITX=IW*.5, PITZ=DZ0-8, TELX=IW*.66, TELZ=DZ0-4;
@@ -866,7 +853,7 @@ function buildSky(){
 
 /* ---------- three ---------- */
 var canvas=document.getElementById('w'), renderer, scene, cam, U, SU, built=false, t0=0;
-var frames=[], heroes=[], sprites=[], textures=[], skyPts, stars=[], nextLab;
+var awLabs=[], awTitle=null, frames=[], heroes=[], sprites=[], textures=[], skyPts, stars=[], nextLab;
 function frameMaterial(tex,seed){
   return new THREE.ShaderMaterial({
     uniforms:{uTex:{value:tex},uReveal:{value:0},uAlpha:{value:1},uTime:{value:0},uSeed:{value:seed},uAsp:{value:1},uBr:{value:.85}},
@@ -904,7 +891,7 @@ function tickerTex(txt,wide){
   return new THREE.CanvasTexture(c);
 }
 function build(){
-  buildWord(ASP<1.1?['LUCAS','THOMAS']:['LUCAS THOMAS'],0,0,8500); buildDust(); buildDoor(-46,3.4,-4,2.6,true,AMB); buildAwards(); buildAisle(); buildMansion(); buildRoad(); buildCar(); buildInterior(); buildStars(); buildVortex();
+  buildWord(ASP<1.1?['LUCAS','THOMAS']:['LUCAS THOMAS'],0,0,8500); buildDust(); buildDoor(-46,3.4,-4,2.6,true,AMB); buildAisle(); buildMansion(); buildRoad(); buildCar(); buildInterior(); buildStars(); buildVortex();
   var g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
   g.setAttribute('aCol',new THREE.Float32BufferAttribute(col,3));
@@ -1026,6 +1013,8 @@ function build(){
     stars.push({sp:sp,lb:lb});
   });
   (function(){ var S2=Math.max(.62,HX), IW2=10.5*S2; nextLab=new THREE.Sprite(new THREE.SpriteMaterial({map:tickerTex('UP NEXT',true),transparent:true,depthTest:false,depthWrite:false,blending:THREE.AdditiveBlending,opacity:0})); nextLab.position.set(-IW2*.52,-.1,IZ1-.5-7.5); nextLab.scale.set(7,1.3,1); nextLab.renderOrder=2; scene.add(nextLab); })();
+  (function(){ var K=AW.K; function wp(u,y,v){ return [AW.cx-v*K, -4+(y+4)*K, AW.cz+u*K]; }
+    var tp=wp(0,6.1,0); awTitle=new THREE.Sprite(new THREE.SpriteMaterial({map:tickerTex('THE TROPHY SHELF',true),transparent:true,depthTest:false,depthWrite:false,blending:THREE.AdditiveBlending,opacity:0})); awTitle.position.set(tp[0],tp[1],tp[2]); awTitle.scale.set(5.4,1,1); awTitle.renderOrder=2; scene.add(awTitle); })();
   built=true; t0=performance.now();
 }
 function init(){
@@ -1045,8 +1034,8 @@ function resize(){
 addEventListener('resize',function(){ if(built) resize(); });
 
 /* ---------- scroll → world ---------- */
-var BT=[['b0',0,.04],['b1',.045,.092],['b2',.14,.19],['b3',.22,.27],['b4',.30,.35],['b5',.38,.43],['b6',.455,.53],['b7',.64,.70]];
-STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]); BT.push(['b15',.098,.134]);
+var BT=[['b0',0,.04],['b1',.05,.11],['b2',.14,.19],['b3',.22,.27],['b4',.30,.35],['b5',.38,.43],['b6',.455,.53],['b7',.64,.70]];
+STB.forEach(function(r,i){BT.push(['b'+(8+i),r[0],r[1]])}); BT.push(['b14',.965,1.2]);
 var beats=BT.map(function(x){var el=document.getElementById(x[0]);return {el:el,a:x[1],b:x[2],in:el.querySelector('.in'),r:el.classList.contains('r')}});
 var scrim=document.getElementById('scrim'), scrimR=document.getElementById('scrimR'), flash=document.getElementById('flash'), progI=document.querySelector('#prog i'), chap=document.getElementById('chap'), cur=document.getElementById('cur');
 function prog(){var m=document.documentElement.scrollHeight-innerHeight;return m>0?Math.min(1,Math.max(0,scrollY/m)):0}
@@ -1309,7 +1298,13 @@ var PG=[
   nums:[['1,283','stories scored'],['402','to read first'],['100','companies (S&P 100)'],['10','story categories'],['269','tests gate every deploy']],
   chips:['Python','JavaScript','SQLite','Gemini API','Chart.js','GitHub Actions','Cloudflare Pages'],
   btn:[['Open the live dashboard ↗','https://stock-news-dashboard.pages.dev']],
-  img:[['img/sp-home.webp','home: search any of the 100 companies',1.6],['img/sp-feed.webp','the feed: the stories worth reading first',1.6],['img/sp-dir.webp','the S&P 100, by sector, vs the index',1.6],['img/sp-company.webp','a company page: price, stories, filings',1.6],['img/sp-econ.webp','economy: real releases and what they touch',1.6],['img/sp-analytics.webp','analytics: what\'s been collected',1.6]],note:'Screenshots are from the repo\'s demo build: the real design with sample data. The live dashboard has the real thing.'}
+  img:[['img/sp-home.webp','home: search any of the 100 companies',1.6],['img/sp-feed.webp','the feed: the stories worth reading first',1.6],['img/sp-dir.webp','the S&P 100, by sector, vs the index',1.6],['img/sp-company.webp','a company page: price, stories, filings',1.6],['img/sp-econ.webp','economy: real releases and what they touch',1.6],['img/sp-analytics.webp','analytics: what\'s been collected',1.6]],note:'Screenshots are from the repo\'s demo build: the real design with sample data. The live dashboard has the real thing.'},
+ {e:'Awards · the trophy shelf',t:'Things worth framing',k:5,bg:'#150d05',glow:.8,sx:3.0,solo:1,back:'Back to the house',
+  p:['These are the three I\'m proudest of, the ones on the middle shelf. The rest are on the wall behind them.'],
+  res:[['8th in Canada','Chem 13 News Exam, University of Waterloo · 27th worldwide, 2026'],['Best Science Award','SEEK Jr. hackathon · one day, one autonomous robot'],['3rd Overall','CETA Robotics · also 1st in Creativity and 2nd in Obstacle Avoidance']],
+  p2:['<b>Best Video Presentation</b> · SHAD Canada, 2024','<b>Northern Design Technology Award</b>','<b>High Achiever Medal</b> · University of Waterloo, Chem 13','<b>Ontario Scholar</b> · 2026'],
+  chips:[],
+  img:[['img/p-plaques.webp','the CETA robotics plaques',.71]]}
 ];
 var pgEl=document.getElementById('pg'), pgW=document.getElementById('pgw'), pgX=document.getElementById('pgx'), zoomEl=document.getElementById('zoom'), pgIdx=-1, pgLast=null;
 function renderPg(i){
@@ -1319,13 +1314,14 @@ function renderPg(i){
   d.p.forEach(function(x){h+='<p>'+x+'</p>';});
   if(d.res) h+='<ul class="awl">'+d.res.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>';}).join('')+'</ul>';
   if(d.nums) h+='<div class="nums">'+d.nums.map(function(n){return '<div><b>'+n[0]+'</b><span>'+n[1]+'</span></div>';}).join('')+'</div>';
+  if(d.p2) h+='<ul class="more">'+d.p2.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';
   if(d.chips&&d.chips.length) h+='<ul class="chips">'+d.chips.map(function(c){return '<li>'+c+'</li>';}).join('')+'</ul>';
   if(d.note) h+='<p class="fine" style="margin-top:1rem">'+d.note+'</p>';
   if(d.hand&&d.img) h+='<p class="hand" style="margin-top:1.2rem">'+d.hand+'</p>';
   h+='<div id="pgn">';
   (d.btn||[]).forEach(function(b){h+='<a class="btn2 solid" href="'+b[1]+'" target="_blank" rel="noopener">'+b[0]+'</a>';});
-  h+='<button class="btn2" type="button" data-pgnext="'+((i+1)%PG.length)+'" style="background:none;cursor:pointer">Next: '+PG[(i+1)%PG.length].t+' →</button>';
-  h+='<button class="btn2" type="button" data-pgclose="1" style="background:none;cursor:pointer">Back to the stars</button></div></div>';
+  if(!d.solo) h+='<button class="btn2" type="button" data-pgnext="'+((i+1)%6)+'" style="background:none;cursor:pointer">Next: '+PG[(i+1)%6].t+' →</button>';
+  h+='<button class="btn2" type="button" data-pgclose="1" style="background:none;cursor:pointer">'+(d.back||'Back to the stars')+'</button></div></div>';
   h+='<div class="shots">'+((d.img&&d.img.length)?d.img.map(function(m){return '<figure><img src="'+m[0]+'" alt="'+m[1]+'" loading="lazy"><figcaption>'+m[1]+'</figcaption></figure>';}).join(''):'')+'</div>';
   pgW.innerHTML=h;
 }
@@ -1343,12 +1339,16 @@ pgEl.addEventListener('click',function(e){
 zoomEl.addEventListener('click',function(){ zoomEl.classList.remove('on'); });
 addEventListener('keydown',function(e){ if(e.key==='Escape'&&pgIdx>=0){ if(zoomEl.classList.contains('on')) zoomEl.classList.remove('on'); else closePg(); } });
 /* open-page buttons inside each star beat */
-for(var bi=0;bi<PG.length;bi++){ (function(k){ var bt=document.createElement('button'); bt.type='button'; bt.className='btn2'; bt.style.cssText='margin-top:1.1rem;background:none;cursor:pointer'; bt.textContent='Open the project page →'; bt.addEventListener('click',function(){openPg(k);}); var inn=beats[8+k]&&beats[8+k].in; if(inn) inn.appendChild(bt); })(bi); }
+for(var bi=0;bi<6;bi++){ (function(k){ var bt=document.createElement('button'); bt.type='button'; bt.className='btn2'; bt.style.cssText='margin-top:1.1rem;background:none;cursor:pointer'; bt.textContent='Open the project page →'; bt.addEventListener('click',function(){openPg(k);}); var inn=beats[8+k]&&beats[8+k].in; if(inn) inn.appendChild(bt); })(bi); }
+(function(){ var inn=beats[7]&&beats[7].in; if(!inn) return; var bt=document.createElement('button'); bt.type='button'; bt.className='btn2'; bt.style.cssText='margin-top:.6rem;background:none;cursor:pointer'; bt.textContent='Open the trophy shelf →'; bt.addEventListener('click',function(){openPg(6);}); inn.appendChild(bt); })();
+/* the trophy shelf in the house: screen-space hit test */
+var awScr=null, awHit=false;
+function awAt(x,y){ if(!awScr||sm<.635||sm>.705) return false; var dx=x-awScr[0], dy=y-awScr[1]; return Math.abs(dx)<awScr[2]&&Math.abs(dy)<awScr[3]; }
 /* stars: click / hover (screen-space hit test) */
 var starHit=-1, _sv=new THREE.Vector3();
 function starAt(x,y){ var best=-1,bd=1e9; for(var i=0;i<stars.length;i++){ var st=stars[i]; if(!st.scr||sm<.76||sm>.935) continue; var dx=x-st.scr[0], dy=y-st.scr[1], d=dx*dx+dy*dy, rr=st.scr[2]; if(d<rr*rr&&d<bd){bd=d;best=i;} } return best; }
-addEventListener('pointermove',function(e){ if(pgIdx>=0){ cur.classList.remove('star'); return; } var k=starAt(e.clientX,e.clientY); starHit=k; cur.classList.toggle('star',k>=0); document.body.style.cursor=k>=0?'pointer':''; },{passive:true});
-addEventListener('click',function(e){ if(pgIdx>=0||e.target.closest('a,button')) return; var k=starAt(e.clientX,e.clientY); if(k>=0) openPg(k); });
+addEventListener('pointermove',function(e){ if(pgIdx>=0){ cur.classList.remove('star'); return; } var k=starAt(e.clientX,e.clientY); awHit=k<0&&awAt(e.clientX,e.clientY); starHit=k; cur.classList.toggle('star',k>=0||awHit); document.body.style.cursor=(k>=0||awHit)?'pointer':''; },{passive:true});
+addEventListener('click',function(e){ if(pgIdx>=0||e.target.closest('a,button')) return; var k=starAt(e.clientX,e.clientY); if(k>=0) openPg(k); else if(awAt(e.clientX,e.clientY)) openPg(6); });
 
 var dtE=16, slowN=0, curDpr=0, lastNow=0;
 function frame(now){
@@ -1382,11 +1382,15 @@ function frame(now){
     f.mesh.rotation.y=-f.sd*(Math.PI/2+((ALPHA-GAMMA)-Math.PI/2)*kk)-mx*.06; f.mesh.rotation.x=my*.04;
     f.mesh.position.y=f.base+Math.sin(t*.8+i)*.05; }
   for(i=0;i<stars.length;i++){ var sv=beatV(8+i), st=stars[i]; var pul=1+.12*Math.sin(t*2+i);
+    if(awTitle){ var av=ss(.625,.65,s)*(1-ss(.69,.715,s)); awTitle.material.opacity=av*(awHit?1:.8); awTitle.visible=av>.01; awLabs.forEach(function(sp){ sp.material.opacity=av*.85; sp.visible=av>.01; }); }
     if(nextLab){ nextLab.material.opacity=ss(.77,.8,s)*(1-ss(.9,.925,s))*.9; nextLab.visible=nextLab.material.opacity>.01; }
     var vis=ss(.745,.78,s); st.sp.visible=st.lb.visible=vis>.01; st.sp.scale.setScalar((9+sv*9)*pul); st.lb.material.opacity=Math.max(sv,i===starHit?1:0)*.95*vis; st.sp.material.opacity=(.95+.05*sv)*vis; }
   for(i=0;i<sprites.length;i++){ var sp=sprites[i]; d=z-sp.position.z; sp.material.opacity=sp.userData.lab?ss(3,8,d)*(1-ss(30,60,d))*.95:ss(2,6,d)*(1-ss(26,58,d))*.9; sp.visible=sp.material.opacity>.01; }
   (function(){ var yw=STARD[5][0], pp=STARD[5][1]; U.uVX.value.set(Math.cos(yw),0,-Math.sin(yw)); U.uVY.value.set(Math.sin(pp)*Math.sin(yw),Math.cos(pp),Math.sin(pp)*Math.cos(yw)); U.uVZ.value.set(Math.cos(pp)*Math.sin(yw),-Math.sin(pp),Math.cos(pp)*Math.cos(yw)); })();
   if(pgIdx<0) renderer.render(scene,cam); else bgFrame(now);
+  (function(){ if(sm<.62||sm>.72){ awScr=null; return; } var K=AW.K, c=new THREE.Vector3(AW.cx,-4+1.9*K*1.2,AW.cz), a=new THREE.Vector3(AW.cx,-4+1.9*K*1.2,AW.cz+3.6*K), b=new THREE.Vector3(AW.cx,-4+5.2*K,AW.cz), e=new THREE.Vector3(AW.cx,-4,AW.cz);
+    c.project(cam); a.project(cam); b.project(cam); e.project(cam); if(c.z>1){ awScr=null; return; }
+    var W2=innerWidth*.5, H2=innerHeight*.5; awScr=[c.x*W2+W2,-c.y*H2+H2,Math.max(70,Math.abs(a.x-c.x)*W2*1.1),Math.max(70,Math.abs(b.y-e.y)*H2*.62)]; })();
   for(i=0;i<stars.length;i++){ _sv.copy(stars[i].sp.position).project(cam); stars[i].scr=(_sv.z<1&&_sv.z>-1)?[(_sv.x*.5+.5)*innerWidth,(-_sv.y*.5+.5)*innerHeight,Math.max(46,innerWidth*.035)]:null; }
   /* DOM */
   var sc=0, scR=0;
@@ -1401,7 +1405,7 @@ function frame(now){
   var f1=Math.exp(-Math.pow((z+46)/2.2,2)), f2=Math.max(Math.exp(-Math.pow((z-HZ)/3.4,2)),Math.exp(-Math.pow((z-IZ1)/3.2,2))*(s<.8?1:0),Math.exp(-Math.pow((s-.954)/.007,2)));
   flash.style.opacity=Math.min(.95,Math.max(f1,f2));
   progI.style.transform='scaleY('+s.toFixed(4)+')';
-  var cn=s<.045?'Opening':(s<.09?'The door':(s<.138?'Awards':(s<.44?'StockPulse':(s<.6?'The drive':(s<.75?'Inside':(s<.93?'Stargazing':'Space'))))));
+  var cn=s<.045?'Opening':(s<.13?'The door':(s<.44?'StockPulse':(s<.6?'The drive':(s<.75?'Inside':(s<.93?'Stargazing':'Space')))));
   if(cn!==lastChap){lastChap=cn;chap.innerHTML='<b>'+cn+'</b><i></i><span>scroll</span>';}
   curX+=(tcurX-curX)*.2; curY+=(tcurY-curY)*.2; cur.style.transform='translate('+curX.toFixed(1)+'px,'+curY.toFixed(1)+'px)';
   requestAnimationFrame(frame);
