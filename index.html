@@ -964,7 +964,7 @@ function build(){
   "  if(fk>0.){ c*=1.+fk*1.4; s*=1.+fk*1.3; }",
   "  vec4 mv=modelViewMatrix*vec4(p,1.);",
   "  vec4 q=projectionMatrix*mv;",
-  "  vec2 nd=q.xy/q.w; vec2 dm=(nd-uMouse)*vec2(uAsp,1.); float fall=exp(-dot(dm,dm)*94.)*uMouseK;",
+  "  vec2 nd=q.xy/q.w; vec2 dm=(nd-uMouse)*vec2(uAsp,1.); float fall=exp(-dot(dm,dm)*192.)*uMouseK;",
   "  nd+=normalize(dm+vec2(1e-5))*fall*.2/vec2(uAsp,1.);",
   "  q.xy=nd*q.w; gl_Position=q;",
   "  gl_PointSize=clamp(s*uPix*36./max(-mv.z,.1),1.,22.)*(1.+fall*.8);",
@@ -992,7 +992,7 @@ function build(){
     "  else if(aKind>.25){ float tw=.6+.4*sin(uTime*(.5+fract(aSeed*11.))+aSeed*50.); sz=1.4+fract(aSeed*7.)*1.3; c=mix(vec3(.6,.55,1.),vec3(1.,.82,.66),fract(aSeed*5.))*1.15; a=(.3+.32*fract(aSeed*3.))*tw; }",
     "  else { float tw=.5+.5*sin(uTime*(.8+fract(aSeed*13.)*2.)+aSeed*60.); float big=step(.94,fract(aSeed*31.)); sz=1.5+fract(aSeed*7.)*1.7+big*3.2; c=mix(vec3(.66,.76,1.),vec3(1.,.88,.66),fract(aSeed*5.)); a=(.45+.55*tw)*(1.+big*.6); }",
     "  vec4 q=projectionMatrix*modelViewMatrix*vec4(p,1.);",
-    "  vec2 nd=q.xy/q.w; vec2 dm=(nd-uMouse)*vec2(uAsp,1.); float fall=exp(-dot(dm,dm)*37.)*uMouseK;",
+    "  vec2 nd=q.xy/q.w; vec2 dm=(nd-uMouse)*vec2(uAsp,1.); float fall=exp(-dot(dm,dm)*75.)*uMouseK;",
     "  nd+=normalize(dm+vec2(1e-5))*fall*.12/vec2(uAsp,1.); q.xy=nd*q.w; gl_Position=q;",
     "  gl_PointSize=sz*uPix*(1.+fall*.8); vC=c; vA=a*(1.+fall); }"].join("\n"),
     fragmentShader:"varying vec3 vC; varying float vA; void main(){ float r=length(gl_PointCoord-.5); if(r>.5) discard; float a=smoothstep(.5,0.,r); gl_FragColor=vec4(vC,a*a*vA); }"});
